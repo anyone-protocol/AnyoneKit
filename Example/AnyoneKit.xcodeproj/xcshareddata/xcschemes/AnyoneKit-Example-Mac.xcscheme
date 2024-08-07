@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A0F00908279070B40073D36D"
-               BuildableName = "Tor-Example-Mac.app"
-               BlueprintName = "Tor-Example-Mac"
-               ReferencedContainer = "container:Tor.xcodeproj">
+               BuildableName = "AnyoneKit-Example-Mac.app"
+               BlueprintName = "AnyoneKit-Example-Mac"
+               ReferencedContainer = "container:AnyoneKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A0F00908279070B40073D36D"
-            BuildableName = "Tor-Example-Mac.app"
-            BlueprintName = "Tor-Example-Mac"
-            ReferencedContainer = "container:Tor.xcodeproj">
+            BuildableName = "AnyoneKit-Example-Mac.app"
+            BlueprintName = "AnyoneKit-Example-Mac"
+            ReferencedContainer = "container:AnyoneKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A0F00908279070B40073D36D"
-            BuildableName = "Tor-Example-Mac.app"
-            BlueprintName = "Tor-Example-Mac"
-            ReferencedContainer = "container:Tor.xcodeproj">
+            BuildableName = "AnyoneKit-Example-Mac.app"
+            BlueprintName = "AnyoneKit-Example-Mac"
+            ReferencedContainer = "container:AnyoneKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

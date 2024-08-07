@@ -7,19 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import <Tor/NSBundle+GeoIP.h>
-#import <Tor/TORConfiguration.h>
-#import <Tor/TORController.h>
-
-#ifdef USE_ARTI
-    #import <Tor/TORArti.h>
-#else
-    #ifdef USE_ONIONMASQ
-        #import <Tor/Onionmasq.h>
-    #else
-        #import <Tor/TORThread.h>
-    #endif
-#endif
+#import <AnyoneKit/NSBundle+GeoIP.h>
+#import <AnyoneKit/TORConfiguration.h>
+#import <AnyoneKit/TORController.h>
+#import <AnyoneKit/TORThread.h>
 
 @implementation AppDelegate
 
@@ -37,50 +28,6 @@
     configuration.dataDirectory = [docDir URLByAppendingPathComponent:@"tor"];
     configuration.geoipFile = NSBundle.geoIpBundle.geoipFile;
     configuration.geoip6File = NSBundle.geoIpBundle.geoip6File;
-
-    NSURL *cacheDir = [fm URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask].firstObject;
-
-#ifdef USE_ARTI
-
-    configuration.socksPort = 9150;
-    configuration.dnsPort = 1951;
-    configuration.dataDirectory = [docDir URLByAppendingPathComponent:@"org.torproject.Arti"];
-    configuration.logfile = [docDir URLByAppendingPathComponent:@"arti.log"];
-    configuration.cacheDirectory = [cacheDir URLByAppendingPathComponent:@"org.torproject.Arti"];
-
-    NSLog(@"Configuration:\n%@", [configuration compile]);
-
-    [TORArti startWithConfiguration:configuration completed:^{
-        NSLog(@"established");
-    }];
-
-#else
-
-    #ifdef USE_ONIONMASQ
-
-    [Onionmasq startWithReader:^{
-        NSLog(@"[Read]");
-
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [Onionmasq receive:@[]];
-        });
-    }
-                        writer:^_Bool(NSData * _Nonnull packet, NSNumber * _Nonnull version) {
-        NSLog(@"[Write] version=%@, packet=%@", version, packet);
-
-        return false;
-    }
-                      stateDir:docDir
-                      cacheDir:cacheDir
-                      pcapFile:nil
-                       onEvent:^(id event) {
-        NSLog(@"[Event] %@", event);
-    }
-                         onLog:^(NSString * _Nonnull message) {
-        NSLog(@"[Log] %@", message);
-    }];
-
-    #else
 
     TORThread *thread = [[TORThread alloc] initWithConfiguration:configuration];
     [thread start];
@@ -135,10 +82,6 @@
             }];
         }];
     });
-
-    #endif
-
-#endif
 
     return YES;
 }

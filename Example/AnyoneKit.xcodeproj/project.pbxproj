@@ -7,25 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0314CBC366B59AACC3BD77D9 /* Pods_Tor_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B3520587D654F10671E7745 /* Pods_Tor_Tests.framework */; };
-		2A7611A3AF4442FB65EAC417 /* Pods_Tor_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01163AA30AD557595178CC35 /* Pods_Tor_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
-		6003F59E195388D20070C39A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* AppDelegate.m */; };
-		6003F5A7195388D20070C39A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* ViewController.m */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
-		7913583D7355D84D17A5203C /* Pods_Tor_Example_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BEC16FF0E4EF90AB4524CF2 /* Pods_Tor_Example_Mac.framework */; };
-		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		A0CADB502C63B7570037A37C /* AnyoneKit-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0CADB462C63B7570037A37C /* AnyoneKit-Info.plist */; };
+		A0CADB512C63B7570037A37C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CADB472C63B7570037A37C /* main.m */; };
+		A0CADB522C63B7570037A37C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CADB492C63B7570037A37C /* AppDelegate.m */; };
+		A0CADB532C63B7570037A37C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CADB4B2C63B7570037A37C /* ViewController.m */; };
+		A0CADB572C63B7870037A37C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0CADB552C63B7870037A37C /* Main.storyboard */; };
 		A0F008FC27906DBA0073D36D /* TORConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F008FA27906DBA0073D36D /* TORConfigurationTests.m */; };
 		A0F008FD27906DBA0073D36D /* TORControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F008FB27906DBA0073D36D /* TORControllerTests.m */; };
 		A0F0090D279070B40073D36D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F0090C279070B40073D36D /* AppDelegate.m */; };
 		A0F00910279070B40073D36D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F0090F279070B40073D36D /* ViewController.m */; };
 		A0F00915279070B40073D36D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F00913279070B40073D36D /* Main.storyboard */; };
 		A0F00917279070B40073D36D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F00916279070B40073D36D /* main.m */; };
-		A0F0091D279072D60073D36D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F0091C279072D60073D36D /* main.m */; };
+		A7B012BE39395B4832000858 /* Pods_AnyoneKit_Example_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338E0F8BE19C4C4E20A97AAD /* Pods_AnyoneKit_Example_Mac.framework */; };
+		D4072633ACC30997CD7D703F /* Pods_AnyoneKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A40CFD991CFEFD97E87FF4 /* Pods_AnyoneKit_Example.framework */; };
+		E2A8FCEA0111624D3C5B5749 /* Pods_AnyoneKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0928D295DCCC1149ED69712 /* Pods_AnyoneKit_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,63 +40,63 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01163AA30AD557595178CC35 /* Pods_Tor_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tor_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B3520587D654F10671E7745 /* Pods_Tor_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tor_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1024D01157BEB1EA55952BD3 /* Pods-AnyoneKit-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyoneKit-Example.debug.xcconfig"; path = "Target Support Files/Pods-AnyoneKit-Example/Pods-AnyoneKit-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1D7391AAD3752903BDA8A2CC /* Pods-Tor_Example_Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor_Example_Mac.debug.xcconfig"; path = "Target Support Files/Pods-Tor_Example_Mac/Pods-Tor_Example_Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		25A40CFD991CFEFD97E87FF4 /* Pods_AnyoneKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyoneKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3369E201AA8D44290EFDB264 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		338E0F8BE19C4C4E20A97AAD /* Pods_AnyoneKit_Example_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyoneKit_Example_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BD4F2E4E0599631250E97FC /* Pods-Tor_Example_Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor_Example_Mac.release.xcconfig"; path = "Target Support Files/Pods-Tor_Example_Mac/Pods-Tor_Example_Mac.release.xcconfig"; sourceTree = "<group>"; };
-		4BEC16FF0E4EF90AB4524CF2 /* Pods_Tor_Example_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tor_Example_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DFC6FCDC4F8056024E28F5B /* Pods-Tor-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor-Tests.release.xcconfig"; path = "Target Support Files/Pods-Tor-Tests/Pods-Tor-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		4F31AB271AA16E836CDC5F8D /* Pods-Tor-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor-Example.debug.xcconfig"; path = "Target Support Files/Pods-Tor-Example/Pods-Tor-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		591053441A46E47D764CDDAB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		6003F58A195388D20070C39A /* Tor-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tor-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58A195388D20070C39A /* AnyoneKit-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnyoneKit-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		6003F595195388D20070C39A /* Tor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tor-Info.plist"; sourceTree = "<group>"; };
-		6003F59C195388D20070C39A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		6003F59D195388D20070C39A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		6003F5AE195388D20070C39A /* Tor-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tor-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F5AE195388D20070C39A /* AnyoneKit-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AnyoneKit-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		6CF2DE60BF09B91BB81D2E6F /* Pods-Tor_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor_Example.release.xcconfig"; path = "Target Support Files/Pods-Tor_Example/Pods-Tor_Example.release.xcconfig"; sourceTree = "<group>"; };
 		74CA0FB740D38C49003C1E1A /* Pods-Tor-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor-Example.release.xcconfig"; path = "Target Support Files/Pods-Tor-Example/Pods-Tor-Example.release.xcconfig"; sourceTree = "<group>"; };
+		7D3F3AA9B00EA31999373254 /* Pods-AnyoneKit-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyoneKit-Example.release.xcconfig"; path = "Target Support Files/Pods-AnyoneKit-Example/Pods-AnyoneKit-Example.release.xcconfig"; sourceTree = "<group>"; };
+		7FE9B5BC233CA08F6EED0604 /* Pods-AnyoneKit-Example-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyoneKit-Example-Mac.release.xcconfig"; path = "Target Support Files/Pods-AnyoneKit-Example-Mac/Pods-AnyoneKit-Example-Mac.release.xcconfig"; sourceTree = "<group>"; };
 		80D47871C3901193EE623A3E /* Pods-Tor_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor_Tests.debug.xcconfig"; path = "Target Support Files/Pods-Tor_Tests/Pods-Tor_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AA26438ED97EA21E1B6572D /* Pods-Tor-Example-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor-Example-Mac.release.xcconfig"; path = "Target Support Files/Pods-Tor-Example-Mac/Pods-Tor-Example-Mac.release.xcconfig"; sourceTree = "<group>"; };
 		90700F7B59D5C0641E3250C1 /* Pods-Tor_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor_Example.debug.xcconfig"; path = "Target Support Files/Pods-Tor_Example/Pods-Tor_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		93A4EA262BB0B20934ED644E /* Tor.podspec */ = {isa = PBXFileReference; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Tor.podspec; path = ../Tor.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A00545632796CA6700C9F635 /* TorStatic.podspec */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; name = TorStatic.podspec; path = ../TorStatic.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A0463DB82AA0DB0700AC9925 /* onionmasq.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = onionmasq.sh; path = ../Tor/onionmasq.sh; sourceTree = "<group>"; };
 		A07DA5B42791AED000D62827 /* .gitmodules */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitmodules; path = ../.gitmodules; sourceTree = "<group>"; };
-		A0C582562AE8FCA000A81084 /* Arti.podspec */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; name = Arti.podspec; path = ../Arti.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A0C981E32A9F52D100E265EE /* mmap-cache.patch */ = {isa = PBXFileReference; lastKnownFileType = text; name = "mmap-cache.patch"; path = "../Tor/mmap-cache.patch"; sourceTree = "<group>"; };
-		A0E5E59A298BC74000727C4F /* arti.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = arti.sh; path = ../Tor/arti.sh; sourceTree = "<group>"; };
-		A0E5E59B298BC8A100727C4F /* arti */ = {isa = PBXFileReference; lastKnownFileType = folder; name = arti; path = ../Tor/arti; sourceTree = "<group>"; };
+		A0CADB432C63B65B0037A37C /* AnyoneKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = AnyoneKit.podspec; path = ../AnyoneKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A0CADB462C63B7570037A37C /* AnyoneKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AnyoneKit-Info.plist"; sourceTree = "<group>"; };
+		A0CADB472C63B7570037A37C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A0CADB482C63B7570037A37C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A0CADB492C63B7570037A37C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A0CADB4A2C63B7570037A37C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A0CADB4B2C63B7570037A37C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A0CADB562C63B7870037A37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A0CADB582C63B9060037A37C /* xz.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = xz.sh; path = ../AnyoneKit/xz.sh; sourceTree = "<group>"; };
+		A0CADB592C63B91E0037A37C /* openssl.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = openssl.sh; path = ../AnyoneKit/openssl.sh; sourceTree = "<group>"; };
+		A0CADB5A2C63B9310037A37C /* libevent.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = libevent.sh; path = ../AnyoneKit/libevent.sh; sourceTree = "<group>"; };
+		A0CADB5B2C63B9400037A37C /* tor.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = tor.sh; path = ../AnyoneKit/tor.sh; sourceTree = "<group>"; };
+		A0CADB5C2C63B9510037A37C /* mmap-cache.patch */ = {isa = PBXFileReference; lastKnownFileType = text; name = "mmap-cache.patch"; path = "../AnyoneKit/mmap-cache.patch"; sourceTree = "<group>"; };
 		A0F008F727906CA30073D36D /* Podfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
 		A0F008F827906CA30073D36D /* Podfile */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A0F008FA27906DBA0073D36D /* TORConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TORConfigurationTests.m; sourceTree = "<group>"; };
 		A0F008FB27906DBA0073D36D /* TORControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TORControllerTests.m; sourceTree = "<group>"; };
 		A0F008FE27906F620073D36D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
-		A0F0090127906F970073D36D /* tor.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = tor.sh; path = ../Tor/tor.sh; sourceTree = "<group>"; };
-		A0F0090227906F970073D36D /* xz.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = xz.sh; path = ../Tor/xz.sh; sourceTree = "<group>"; };
-		A0F0090327906F970073D36D /* libevent.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = libevent.sh; path = ../Tor/libevent.sh; sourceTree = "<group>"; };
-		A0F0090427906F970073D36D /* openssl.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = openssl.sh; path = ../Tor/openssl.sh; sourceTree = "<group>"; };
-		A0F00909279070B40073D36D /* Tor-Example-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tor-Example-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0F00909279070B40073D36D /* AnyoneKit-Example-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnyoneKit-Example-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F0090B279070B40073D36D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A0F0090C279070B40073D36D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A0F0090E279070B40073D36D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A0F0090F279070B40073D36D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A0F00916279070B40073D36D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A0F00918279070B40073D36D /* Example-Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Example-Mac.entitlements"; sourceTree = "<group>"; };
-		A0F0091C279072D60073D36D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A0F0091E279073DA0073D36D /* Tor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tor-Prefix.pch"; sourceTree = "<group>"; };
 		A0F0092027907A8A0073D36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BA2522C350A1D42E715CA3DB /* Pods-AnyoneKit-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyoneKit-Tests.release.xcconfig"; path = "Target Support Files/Pods-AnyoneKit-Tests/Pods-AnyoneKit-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C2C4B3C67BC4AA29D918DFE0 /* Pods-Tor-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor-Tests.debug.xcconfig"; path = "Target Support Files/Pods-Tor-Tests/Pods-Tor-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		CB2CFEF1E61396F316D03428 /* Pods-AnyoneKit-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyoneKit-Tests.debug.xcconfig"; path = "Target Support Files/Pods-AnyoneKit-Tests/Pods-AnyoneKit-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CCD44E911F9C4625A303B626 /* Pods-Tor-Example-Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor-Example-Mac.debug.xcconfig"; path = "Target Support Files/Pods-Tor-Example-Mac/Pods-Tor-Example-Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		E55415BDDAE0686CA74C5C2D /* Pods-AnyoneKit-Example-Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyoneKit-Example-Mac.debug.xcconfig"; path = "Target Support Files/Pods-AnyoneKit-Example-Mac/Pods-AnyoneKit-Example-Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		F0928D295DCCC1149ED69712 /* Pods_AnyoneKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyoneKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF35A366A1B1BD8B0C89AE24 /* Pods-Tor_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor_Tests.release.xcconfig"; path = "Target Support Files/Pods-Tor_Tests/Pods-Tor_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,7 +108,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				2A7611A3AF4442FB65EAC417 /* Pods_Tor_Example.framework in Frameworks */,
+				D4072633ACC30997CD7D703F /* Pods_AnyoneKit_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,7 +119,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				0314CBC366B59AACC3BD77D9 /* Pods_Tor_Tests.framework in Frameworks */,
+				E2A8FCEA0111624D3C5B5749 /* Pods_AnyoneKit_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7913583D7355D84D17A5203C /* Pods_Tor_Example_Mac.framework in Frameworks */,
+				A7B012BE39395B4832000858 /* Pods_AnyoneKit_Example_Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,10 +138,9 @@
 			isa = PBXGroup;
 			children = (
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
-				6003F593195388D20070C39A /* Example for Tor */,
+				A0CADB452C63B6F50037A37C /* Example-iOS */,
 				6003F5B5195388D20070C39A /* Tests */,
 				A0F0090A279070B40073D36D /* Example-Mac */,
-				A0E5E59B298BC8A100727C4F /* arti */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				8C50D6DACFD9A136564A1BEC /* Pods */,
@@ -150,9 +150,9 @@
 		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6003F58A195388D20070C39A /* Tor-Example.app */,
-				6003F5AE195388D20070C39A /* Tor-Tests.xctest */,
-				A0F00909279070B40073D36D /* Tor-Example-Mac.app */,
+				6003F58A195388D20070C39A /* AnyoneKit-Example.app */,
+				6003F5AE195388D20070C39A /* AnyoneKit-Tests.xctest */,
+				A0F00909279070B40073D36D /* AnyoneKit-Example-Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,27 +164,11 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				4BEC16FF0E4EF90AB4524CF2 /* Pods_Tor_Example_Mac.framework */,
-				01163AA30AD557595178CC35 /* Pods_Tor_Example.framework */,
-				0B3520587D654F10671E7745 /* Pods_Tor_Tests.framework */,
+				25A40CFD991CFEFD97E87FF4 /* Pods_AnyoneKit_Example.framework */,
+				338E0F8BE19C4C4E20A97AAD /* Pods_AnyoneKit_Example_Mac.framework */,
+				F0928D295DCCC1149ED69712 /* Pods_AnyoneKit_Tests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6003F593195388D20070C39A /* Example for Tor */ = {
-			isa = PBXGroup;
-			children = (
-				6003F59C195388D20070C39A /* AppDelegate.h */,
-				6003F59D195388D20070C39A /* AppDelegate.m */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* ViewController.h */,
-				6003F5A6195388D20070C39A /* ViewController.m */,
-				A0F0091C279072D60073D36D /* main.m */,
-				6003F595195388D20070C39A /* Tor-Info.plist */,
-				A0F0091E279073DA0073D36D /* Tor-Prefix.pch */,
-			);
-			name = "Example for Tor";
-			path = Tor;
 			sourceTree = "<group>";
 		};
 		6003F5B5195388D20070C39A /* Tests */ = {
@@ -201,22 +185,18 @@
 		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				93A4EA262BB0B20934ED644E /* Tor.podspec */,
-				A0C582562AE8FCA000A81084 /* Arti.podspec */,
-				A00545632796CA6700C9F635 /* TorStatic.podspec */,
+				A0CADB432C63B65B0037A37C /* AnyoneKit.podspec */,
 				3369E201AA8D44290EFDB264 /* README.md */,
 				591053441A46E47D764CDDAB /* LICENSE */,
 				A0F008F827906CA30073D36D /* Podfile */,
 				A0F008F727906CA30073D36D /* Podfile.lock */,
 				A0F008FE27906F620073D36D /* .gitignore */,
 				A07DA5B42791AED000D62827 /* .gitmodules */,
-				A0F0090227906F970073D36D /* xz.sh */,
-				A0F0090427906F970073D36D /* openssl.sh */,
-				A0F0090327906F970073D36D /* libevent.sh */,
-				A0F0090127906F970073D36D /* tor.sh */,
-				A0E5E59A298BC74000727C4F /* arti.sh */,
-				A0463DB82AA0DB0700AC9925 /* onionmasq.sh */,
-				A0C981E32A9F52D100E265EE /* mmap-cache.patch */,
+				A0CADB582C63B9060037A37C /* xz.sh */,
+				A0CADB592C63B91E0037A37C /* openssl.sh */,
+				A0CADB5A2C63B9310037A37C /* libevent.sh */,
+				A0CADB5B2C63B9400037A37C /* tor.sh */,
+				A0CADB5C2C63B9510037A37C /* mmap-cache.patch */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -236,8 +216,28 @@
 				74CA0FB740D38C49003C1E1A /* Pods-Tor-Example.release.xcconfig */,
 				C2C4B3C67BC4AA29D918DFE0 /* Pods-Tor-Tests.debug.xcconfig */,
 				4DFC6FCDC4F8056024E28F5B /* Pods-Tor-Tests.release.xcconfig */,
+				1024D01157BEB1EA55952BD3 /* Pods-AnyoneKit-Example.debug.xcconfig */,
+				7D3F3AA9B00EA31999373254 /* Pods-AnyoneKit-Example.release.xcconfig */,
+				E55415BDDAE0686CA74C5C2D /* Pods-AnyoneKit-Example-Mac.debug.xcconfig */,
+				7FE9B5BC233CA08F6EED0604 /* Pods-AnyoneKit-Example-Mac.release.xcconfig */,
+				CB2CFEF1E61396F316D03428 /* Pods-AnyoneKit-Tests.debug.xcconfig */,
+				BA2522C350A1D42E715CA3DB /* Pods-AnyoneKit-Tests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A0CADB452C63B6F50037A37C /* Example-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A0CADB4A2C63B7570037A37C /* AppDelegate.h */,
+				A0CADB492C63B7570037A37C /* AppDelegate.m */,
+				A0CADB482C63B7570037A37C /* ViewController.h */,
+				A0CADB4B2C63B7570037A37C /* ViewController.m */,
+				A0CADB552C63B7870037A37C /* Main.storyboard */,
+				A0CADB462C63B7570037A37C /* AnyoneKit-Info.plist */,
+				A0CADB472C63B7570037A37C /* main.m */,
+			);
+			path = "Example-iOS";
 			sourceTree = "<group>";
 		};
 		A0F0090A279070B40073D36D /* Example-Mac */ = {
@@ -257,9 +257,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6003F589195388D20070C39A /* Tor-Example */ = {
+		6003F589195388D20070C39A /* AnyoneKit-Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "Tor-Example" */;
+			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "AnyoneKit-Example" */;
 			buildPhases = (
 				92C23A76A3C3CB7B0EE26734 /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
@@ -271,14 +271,14 @@
 			);
 			dependencies = (
 			);
-			name = "Tor-Example";
+			name = "AnyoneKit-Example";
 			productName = Tor;
-			productReference = 6003F58A195388D20070C39A /* Tor-Example.app */;
+			productReference = 6003F58A195388D20070C39A /* AnyoneKit-Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6003F5AD195388D20070C39A /* Tor-Tests */ = {
+		6003F5AD195388D20070C39A /* AnyoneKit-Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "Tor-Tests" */;
+			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "AnyoneKit-Tests" */;
 			buildPhases = (
 				90D8C2DC582D8E6FC6716412 /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
@@ -290,14 +290,14 @@
 			dependencies = (
 				6003F5B4195388D20070C39A /* PBXTargetDependency */,
 			);
-			name = "Tor-Tests";
+			name = "AnyoneKit-Tests";
 			productName = TorTests;
-			productReference = 6003F5AE195388D20070C39A /* Tor-Tests.xctest */;
+			productReference = 6003F5AE195388D20070C39A /* AnyoneKit-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A0F00908279070B40073D36D /* Tor-Example-Mac */ = {
+		A0F00908279070B40073D36D /* AnyoneKit-Example-Mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A0F00919279070B40073D36D /* Build configuration list for PBXNativeTarget "Tor-Example-Mac" */;
+			buildConfigurationList = A0F00919279070B40073D36D /* Build configuration list for PBXNativeTarget "AnyoneKit-Example-Mac" */;
 			buildPhases = (
 				9A118950F57DB5601BC45C3C /* [CP] Check Pods Manifest.lock */,
 				A0F00905279070B40073D36D /* Sources */,
@@ -309,9 +309,9 @@
 			);
 			dependencies = (
 			);
-			name = "Tor-Example-Mac";
+			name = "AnyoneKit-Example-Mac";
 			productName = Tor_Example_Mac;
-			productReference = A0F00909279070B40073D36D /* Tor-Example-Mac.app */;
+			productReference = A0F00909279070B40073D36D /* AnyoneKit-Example-Mac.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -334,7 +334,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "Tor" */;
+			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "AnyoneKit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -347,9 +347,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6003F589195388D20070C39A /* Tor-Example */,
-				6003F5AD195388D20070C39A /* Tor-Tests */,
-				A0F00908279070B40073D36D /* Tor-Example-Mac */,
+				6003F589195388D20070C39A /* AnyoneKit-Example */,
+				6003F5AD195388D20070C39A /* AnyoneKit-Tests */,
+				A0F00908279070B40073D36D /* AnyoneKit-Example-Mac */,
 			);
 		};
 /* End PBXProject section */
@@ -359,7 +359,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				A0CADB502C63B7570037A37C /* AnyoneKit-Info.plist in Resources */,
+				A0CADB572C63B7870037A37C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,16 +388,16 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tor-Example/Pods-Tor-Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Tor-iOS/Tor.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-AnyoneKit-Example/Pods-AnyoneKit-Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AnyoneKit-iOS/AnyoneKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnyoneKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tor-Example/Pods-Tor-Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AnyoneKit-Example/Pods-AnyoneKit-Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		90D8C2DC582D8E6FC6716412 /* [CP] Check Pods Manifest.lock */ = {
@@ -414,7 +415,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Tor-Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AnyoneKit-Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -436,7 +437,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Tor-Example-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AnyoneKit-Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -458,7 +459,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Tor-Example-Mac-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AnyoneKit-Example-Mac-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -471,16 +472,16 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tor-Example-Mac/Pods-Tor-Example-Mac-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Tor-macOS/Tor.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-AnyoneKit-Example-Mac/Pods-AnyoneKit-Example-Mac-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AnyoneKit-macOS/AnyoneKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnyoneKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tor-Example-Mac/Pods-Tor-Example-Mac-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AnyoneKit-Example-Mac/Pods-AnyoneKit-Example-Mac-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -490,9 +491,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6003F59E195388D20070C39A /* AppDelegate.m in Sources */,
-				A0F0091D279072D60073D36D /* main.m in Sources */,
-				6003F5A7195388D20070C39A /* ViewController.m in Sources */,
+				A0CADB532C63B7570037A37C /* ViewController.m in Sources */,
+				A0CADB522C63B7570037A37C /* AppDelegate.m in Sources */,
+				A0CADB512C63B7570037A37C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,12 +521,20 @@
 /* Begin PBXTargetDependency section */
 		6003F5B4195388D20070C39A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6003F589195388D20070C39A /* Tor-Example */;
+			target = 6003F589195388D20070C39A /* AnyoneKit-Example */;
 			targetProxy = 6003F5B3195388D20070C39A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A0CADB552C63B7870037A37C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A0CADB562C63B7870037A37C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		A0F00913279070B40073D36D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -644,12 +653,11 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F31AB271AA16E836CDC5F8D /* Pods-Tor-Example.debug.xcconfig */;
+			baseConfigurationReference = 1024D01157BEB1EA55952BD3 /* Pods-AnyoneKit-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tor/Tor-Prefix.pch";
-				INFOPLIST_FILE = "Tor/Tor-Info.plist";
+				INFOPLIST_FILE = "Example-iOS/AnyoneKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
@@ -661,12 +669,11 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74CA0FB740D38C49003C1E1A /* Pods-Tor-Example.release.xcconfig */;
+			baseConfigurationReference = 7D3F3AA9B00EA31999373254 /* Pods-AnyoneKit-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tor/Tor-Prefix.pch";
-				INFOPLIST_FILE = "Tor/Tor-Info.plist";
+				INFOPLIST_FILE = "Example-iOS/AnyoneKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
@@ -678,7 +685,7 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2C4B3C67BC4AA29D918DFE0 /* Pods-Tor-Tests.debug.xcconfig */;
+			baseConfigurationReference = CB2CFEF1E61396F316D03428 /* Pods-AnyoneKit-Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -696,14 +703,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tor_Example.app/Tor_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyoneKit_Example.app/AnyoneKit_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DFC6FCDC4F8056024E28F5B /* Pods-Tor-Tests.release.xcconfig */;
+			baseConfigurationReference = BA2522C350A1D42E715CA3DB /* Pods-AnyoneKit-Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -717,14 +724,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tor_Example.app/Tor_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyoneKit_Example.app/AnyoneKit_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
 		A0F0091A279070B40073D36D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CCD44E911F9C4625A303B626 /* Pods-Tor-Example-Mac.debug.xcconfig */;
+			baseConfigurationReference = E55415BDDAE0686CA74C5C2D /* Pods-AnyoneKit-Example-Mac.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -762,7 +769,7 @@
 		};
 		A0F0091B279070B40073D36D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8AA26438ED97EA21E1B6572D /* Pods-Tor-Example-Mac.release.xcconfig */;
+			baseConfigurationReference = 7FE9B5BC233CA08F6EED0604 /* Pods-AnyoneKit-Example-Mac.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -802,7 +809,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6003F585195388D10070C39A /* Build configuration list for PBXProject "Tor" */ = {
+		6003F585195388D10070C39A /* Build configuration list for PBXProject "AnyoneKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5BD195388D20070C39A /* Debug */,
@@ -811,7 +818,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "Tor-Example" */ = {
+		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "AnyoneKit-Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C0195388D20070C39A /* Debug */,
@@ -820,7 +827,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "Tor-Tests" */ = {
+		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "AnyoneKit-Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C3195388D20070C39A /* Debug */,
@@ -829,7 +836,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0F00919279070B40073D36D /* Build configuration list for PBXNativeTarget "Tor-Example-Mac" */ = {
+		A0F00919279070B40073D36D /* Build configuration list for PBXNativeTarget "AnyoneKit-Example-Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0F0091A279070B40073D36D /* Debug */,

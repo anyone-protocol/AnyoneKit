@@ -1,10 +1,10 @@
-# Tor.framework
+# AnyoneKit
 
-[![Version](https://img.shields.io/cocoapods/v/Tor.svg?style=flat)](https://cocoapods.org/pods/Tor)
-[![License](https://img.shields.io/cocoapods/l/Tor.svg?style=flat)](https://cocoapods.org/pods/Tor)
-[![Platform](https://img.shields.io/cocoapods/p/Tor.svg?style=flat)](https://cocoapods.org/pods/Tor)
+[![Version](https://img.shields.io/cocoapods/v/AnyoneKit.svg?style=flat)](https://cocoapods.org/pods/AnyoneKit)
+[![License](https://img.shields.io/cocoapods/l/AnyoneKit.svg?style=flat)](https://cocoapods.org/pods/AnyoneKit)
+[![Platform](https://img.shields.io/cocoapods/p/AnyoneKit.svg?style=flat)](https://cocoapods.org/pods/AnyoneKit)
 
-Tor.framework is the easiest way to embed Tor in your iOS application. The API is *not* stable yet, and subject to change.
+AnyoneKit is the easiest way to embed the Anyone network in your iOS application.
 
 Currently, the framework compiles in the following versions of `tor`, `libevent`, `openssl`, and `liblzma`:
 
@@ -23,9 +23,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-- iOS 9.0 or later
-- MacOS 12.0 or later
-- Xcode 13.0 or later
+- iOS 12.0 or later
+- MacOS 10.13 or later
+- Xcode 15.0 or later
 - `autoconf`,  `automake`, `libtool` and  `gettext` in your `PATH`
 
 
@@ -37,29 +37,15 @@ Install build tools via [Homebrew](https://brew.sh):
 brew install automake autoconf libtool gettext
 ```
 
-Tor is available through [CocoaPods](https://cocoapods.org). To install
+AnyoneKit is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 If you use dynamic frameworks, use the root spec:
 
 ```ruby
 use_frameworks!
-pod 'Tor', '~> 408'
+pod 'AnyoneKit', '~> 408'
 ```
-
-(or `Tor/GeoIP` - see below.)
-
-
-If you need to add it as a static library, you will need to add it from a modified podspec:
-
-```ruby
-pod 'Tor', :podspec => 'https://raw.githubusercontent.com/iCepa/Tor.framework/pure_pod/TorStatic.podspec'
-```
-
-Currently static library support is unstable. You might encounter build issues. 
-Every contribution to fix this is welcome!
-
-(or `Tor/GeoIP` - see below.)
 
 If you check out this repository directly, you will also need to fetch the submodules:
 
@@ -70,12 +56,12 @@ If you use it as a normal CocoaPods dependency, that will be done by CocoaPods.
 
 ## Preparing a new release
 
-For maintainers/contributors of Tor.framework, a new release should be prepared by 
+For maintainers/contributors of AnyoneKit, a new release should be prepared by 
 doing the following:
 
 Ensure that you have committed changes to the submodule trees for tor, libevent, openssl, and xz.
 
-Also update info and version numbers in `README.md` and `Tor.podspec`!
+Also update info and version numbers in `README.md` and `AnyoneKit.podspec`!
 
 Then lint like this:
 
@@ -88,14 +74,14 @@ pod lib lint --verbose --allow-warnings
 If the linting went well, create a git tag for the version, push to GitHub and then publish to CocoaPods:
 
 ```sh
-pod trunk push Tor.podspec --verbose --allow-warnings --skip-import-validation --skip-tests
+pod trunk push --verbose --allow-warnings --skip-import-validation --skip-tests
 ```
 
 (Unfortunately, you can not not lint on publish, so you might skip the first lint. However, `pod trunk push`
 will take even longer, because it will clone everything fresh, too.)
 
 
-Then create a [release](https://github.com/iCepa/Tor.framework/releases) in GitHub which corresponds
+Then create a [release](https://github.com/ATOR-Development/AnyoneKit/releases) in GitHub which corresponds
 to the tag, and attach latest info as per older releases.
 
 
@@ -118,29 +104,22 @@ Check build output in the Report Navigator. (Last tab in the left pane.)
 
 ## Usage
 
-### All-in-one `TorManager`
+Starting an instance of the Anyone client involves using three classes: `AnyoneThread`, `AnyoneConfiguration` and `AnyoneController`.
 
-For a headache-free start into the world of Tor on iOS and macOS, check out
-the new [`TorManager` project](https://github.com/tladesignz/TorManager)!
-
-### Do-it-yourself
-
-Starting an instance of Tor involves using three classes: `TORThread`, `TORConfiguration` and `TORController`.
-
-Here is an example of integrating Tor with `NSURLSession`:
+Here is an example of integrating Anyone with `NSURLSession`:
 
 ```objc
-TORConfiguration *configuration = [TORConfiguration new];
+AnyoneConfiguration *configuration = [AnyoneConfiguration new];
 configuration.ignoreMissingTorrc = YES;
 configuration.cookieAuthentication = YES;
 configuration.dataDirectory = [NSURL fileURLWithPath:NSTemporaryDirectory()];
 configuration.controlSocket = [configuration.dataDirectory URLByAppendingPathComponent:@"control_port"];
 
-TORThread *thread = [[TORThread alloc] initWithConfiguration:configuration];
+AnyoneThread *thread = [[AnyoneThread alloc] initWithConfiguration:configuration];
 [thread start];
 
 NSData *cookie = configuration.cookie;
-TORController *controller = [[TORController alloc] initWithSocketURL:configuration.controlSocket];
+AnyoneController *controller = [[AnyoneController alloc] initWithSocketURL:configuration.controlSocket];
 
 NSError *error;
 [controller connect:&error];
@@ -169,83 +148,30 @@ if (error) {
 
 ### GeoIP
 
-In your `Podfile` use the subspec `GeoIP` or `StaticGeoIP` instead of the root spec:
-
-```ruby
-use_frameworks!
-pod 'Tor/GeoIP'
-```
-
-or
-
-```ruby
-pod 'Tor/GeoIP', :podspec => 'https://raw.githubusercontent.com/iCepa/Tor.framework/pure_pod/TorStatic.podspec'
-```
-
-The subspec will create a "GeoIP" bundle with the appropriate GeoIP files.
-
-To use it with Tor, add this to your configuration:
+If you want to use the provided GeoIP files, add this to your configuration:
 
 ```objc
-TORConfiguration *configuration = [TORConfiguration new];
+AnyoneConfiguration *configuration = [AnyoneConfiguration new];
 configuration.geoipFile = NSBundle.geoIpBundle.geoipFile;
 configuration.geoip6File = NSBundle.geoIpBundle.geoip6File;
 ```
 
-### Experimental Arti and Onionmasq podspec
-
-Since I while, this project also contains a podspec, which uses Arti (A Rust Tor Implementation)
-or Onionmasq (Arti with a wrapper taking in IP packets, useful for VPN-style apps.)
-
-```ruby
-pod 'Tor/Arti', :podspec => 'https://raw.githubusercontent.com/iCepa/Tor.framework/pure_pod/Arti.podspec'
-```
-
-or
-
-```ruby
-pod 'Tor/Onionmasq', :podspec => 'https://raw.githubusercontent.com/iCepa/Tor.framework/pure_pod/Arti.podspec'
-```
-
-There's currently a known issue: Onionmasq won't compile if you build for iOS or an iOS simulator right away,
-since some Rust dependencies use custom build scripts which need to get compiled for MacOS, but will try
-to use the wrong platform (iOS) in this case. 
-This can be fixed, if you compile for your machine first:
-
-```sh
-cd Pods/Tor/Tor/onionmasq
-make macos-debug-aarch64-apple-darwin # If you run on Apple Silicon
-make macos-debug-x86_64-apple-darwin # If you're still on Intel
-```
-
-Then, the Rust dependency build scripts will be compiled correctly and the 
-Xcode build will run correctly.
-
-You can also precompile your debug and release targets on the command line, if you like:
-
-```sh
-make macos-release-universal-macos # Release build for MacOS as universal binary
-make ios-release-aarch64-apple-ios # Release build for iOS
-make ios-debug-aarch64-apple-ios # Debug build for iOS device
-make ios-debug-aarch64-apple-ios-sim # Debug build for iOS simulator running on Apple Silicon
-make ios-debug-x86_64-apple-ios # Debug build for iOS simulator running on Intel
-```
-
-
-## Further reading
-
-https://tordev.guardianproject.info
-
 
 ## Authors
+
+### The original Tor.framework
 
 - Conrad Kramer, conrad@conradkramer.com
 - Chris Ballinger, chris@chatsecure.org
 - Mike Tigas, mike@tig.as
 - Benjamin Erhart, berhart@netzarchitekten.com
 
+### AnyoneKit
+
+- Benjamin Erhart, berhart@netzarchitekten.com
+
 
 ## License
 
-Tor.framework is available under the MIT license. See the 
-[`LICENSE`](https://github.com/iCepa/Tor.framework/blob/master/LICENSE) file for more info.
+AnyoneKit is available under the MIT license. See the 
+[`LICENSE`](https://github.com/ATOR-Development/AnyoneKit/blob/pure_pod/LICENSE) file for more info.

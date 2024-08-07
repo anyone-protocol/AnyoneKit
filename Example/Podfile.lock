@@ -1,20 +1,20 @@
 PODS:
-  - Tor/Core (408.12.1)
-  - Tor/CTor (408.12.1):
-    - Tor/Core
-  - Tor/GeoIP (408.12.1):
-    - Tor/CTor
+  - AnyoneKit (408.12.1):
+    - AnyoneKit/Anyone (= 408.12.1)
+  - AnyoneKit/Anyone (408.12.1):
+    - AnyoneKit/Core
+  - AnyoneKit/Core (408.12.1)
 
 DEPENDENCIES:
-  - Tor/GeoIP (from `../`)
+  - AnyoneKit (from `../`)
 
 EXTERNAL SOURCES:
-  Tor:
+  AnyoneKit:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Tor: 958cbe68eef90659339403e40e20d7610a9456dd
+  AnyoneKit: 7d069427398f2baf023504c909ebf298cc23da56
 
-PODFILE CHECKSUM: aaf1dd3b609adb9f024c41d7b7c0ea5a012fd799
+PODFILE CHECKSUM: 9ad077cfbd03b4e8f4449e5c65c9641448dca7d5
 
 COCOAPODS: 1.15.2
