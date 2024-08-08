@@ -81,8 +81,10 @@ NS_ASSUME_NONNULL_BEGIN
 {
     NSMutableArray<NSString *> *arguments = [NSMutableArray new];
 
-    if (self.ignoreMissingTorrc) {
-        [arguments addObjectsFromArray:@[@"--allow-missing-torrc", @"--ignore-missing-torrc"]];
+    [arguments addObject:@"--agree-to-terms"];
+
+    if (self.ignoreMissingAnonrc) {
+        [arguments addObjectsFromArray:@[@"--allow-missing-anonrc", @"--ignore-missing-anonrc"]];
     }
 
     if (self.avoidDiskWrites) {

@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSURL *geoip6File;
 @property (nonatomic, copy, nullable) NSURL *logfile;
 
-@property (nonatomic) BOOL ignoreMissingTorrc;
+@property (nonatomic) BOOL ignoreMissingAnonrc;
 @property (nonatomic) BOOL cookieAuthentication;
 @property (nonatomic) BOOL autoControlPort;
 @property (nonatomic) BOOL avoidDiskWrites;

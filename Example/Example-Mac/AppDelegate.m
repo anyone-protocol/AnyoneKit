@@ -24,7 +24,7 @@
     NSURL *appSuppDir = [fm URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask].firstObject;
 
     AnonConfiguration *configuration = [AnonConfiguration new];
-    configuration.ignoreMissingTorrc = YES;
+    configuration.ignoreMissingAnonrc = YES;
     configuration.avoidDiskWrites = YES;
     configuration.clientOnly = YES;
     configuration.cookieAuthentication = YES;
