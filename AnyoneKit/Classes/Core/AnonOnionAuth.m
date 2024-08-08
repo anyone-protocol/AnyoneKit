@@ -1,13 +1,13 @@
 //
-//  TOROnionAuth.m
-//  Tor
+//  AnonOnionAuth.m
+//  AnyoneKit
 //
 //  Created by Benjamin Erhart on 29.09.21.
 //
 
-#import "TOROnionAuth.h"
+#import "AnonOnionAuth.h"
 
-@implementation TOROnionAuth
+@implementation AnonOnionAuth
 
 - (instancetype)initWithPrivateDirUrl:(nullable NSURL *)privateUrl andPublicDirUrl:(nullable NSURL *)publicUrl
 {
@@ -59,9 +59,9 @@
 
         for (NSURL *file in files)
         {
-            if ([TORAuthKey isAuthFile:file])
+            if ([AnonAuthKey isAuthFile:file])
             {
-                TORAuthKey *key = [[TORAuthKey alloc] initFromUrl:file];
+                AnonAuthKey *key = [[AnonAuthKey alloc] initFromUrl:file];
 
                 if (key) [((NSMutableArray *)_keys) addObject:key];
             }
@@ -79,7 +79,7 @@
 
 // MARK: Public Methods
 
-- (BOOL)set:(TORAuthKey *)key
+- (BOOL)set:(AnonAuthKey *)key
 {
     NSURL *privateUrl = _privateUrl;
     NSURL *publicUrl = _publicUrl;
@@ -123,7 +123,7 @@
 {
     if (idx < 0 || (NSUInteger)idx >= _keys.count) return NO;
 
-    TORAuthKey *key = _keys[idx];
+    AnonAuthKey *key = _keys[idx];
 
     NSError *error;
     [NSFileManager.defaultManager removeItemAtURL:key.file error:&error];

@@ -1,18 +1,18 @@
 //
 //  NSBundle+GeoIP.m
-//  Tor
+//  AnyoneKit
 //
 //  Created by Benjamin Erhart on 02.12.21.
 //
 
 #import "NSBundle+GeoIP.h"
-#import "TORConfiguration.h"
+#import "AnonConfiguration.h"
 
 @implementation NSBundle (GeoIP)
 
 + (NSBundle *)geoIpBundle
 {
-    NSURL *url = [[NSBundle bundleForClass:TORConfiguration.class] URLForResource:@"GeoIP" withExtension:@"bundle"];
+    NSURL *url = [[NSBundle bundleForClass:AnonConfiguration.class] URLForResource:@"GeoIP" withExtension:@"bundle"];
     if (!url) return nil;
 
     return [NSBundle bundleWithURL:url];

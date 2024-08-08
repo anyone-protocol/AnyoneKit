@@ -1,23 +1,23 @@
 //
-//  Tests.m
-//  Tests
+//  AnonControllerTests.m
+//  AnyoneKit
 //
 //  Created by Conrad Kramer on 8/10/15.
 //
 
 #import <XCTest/XCTest.h>
-#import <Tor/Tor.h>
+#import <AnyoneKit/AnyoneKit-iOS-umbrella.h>
 
-@interface TORControllerTests : XCTestCase
+@interface AnonControllerTests : XCTestCase
 
-@property (nonatomic, strong) TORController *controller;
+@property (nonatomic, strong) AnonController *controller;
 @property (readonly) NSData *cookie;
 
 @end
 
-@implementation TORControllerTests
+@implementation AnonControllerTests
 
-+ (TORConfiguration *)configuration {
++ (AnonConfiguration *)configuration {
 #if TARGET_IPHONE_SIMULATOR
     NSString *homeDirectory = nil;
     for (NSString *variable in @[@"IPHONE_SIMULATOR_HOST_HOME", @"SIMULATOR_HOST_HOME"]) {
@@ -31,7 +31,7 @@
     NSString *homeDirectory = NSHomeDirectory();
 #endif
 
-    TORConfiguration *configuration = [TORConfiguration new];
+    AnonConfiguration *configuration = [AnonConfiguration new];
     configuration.cookieAuthentication = @YES;
     configuration.dataDirectory = [NSURL fileURLWithPath:NSTemporaryDirectory()];
     configuration.controlSocket = [[NSURL fileURLWithPath:homeDirectory] URLByAppendingPathComponent:@".Trash/control_port"];
@@ -46,7 +46,7 @@
 + (void)setUp {
     [super setUp];
 
-    TORThread *thread = [[TORThread alloc] initWithConfiguration:self.configuration];
+    AnonThread *thread = [[AnonThread alloc] initWithConfiguration:self.configuration];
     [thread start];
 
     [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5f]];
@@ -55,15 +55,15 @@
 - (void)setUp {
     [super setUp];
 
-    self.controller = [[TORController alloc] initWithSocketURL:[[[self class] configuration] controlSocket]];
+    self.controller = [[AnonController alloc] initWithSocketURL:[[[self class] configuration] controlSocket]];
 }
 
 - (void)testCookieAuthenticationFailure {
     XCTestExpectation *expectation = [self expectationWithDescription:@"authenticate callback"];
     [self.controller authenticateWithData:[@"invalid" dataUsingEncoding:NSUTF8StringEncoding] completion:^(BOOL success, NSError *error) {
         XCTAssertFalse(success);
-        XCTAssertEqualObjects(error.domain, TORControllerErrorDomain);
-        XCTAssertNotEqual(error.code, TORControlReplyCodeOK);
+        XCTAssertEqualObjects(error.domain, AnonControllerErrorDomain);
+        XCTAssertNotEqual(error.code, AnonControlReplyCodeOK);
         XCTAssertGreaterThan(error.localizedDescription, @"Authentication failed: Wrong length on authentication cookie.");
         [expectation fulfill];
     }];
@@ -84,7 +84,7 @@
 }
 
 - (void)testSessionConfiguration {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"tor callback"];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"anon callback"];
 
     [self exec:^{
         [self.controller getSessionConfiguration:^(NSURLSessionConfiguration *configuration) {
@@ -105,12 +105,12 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"resolution callback"];
 
     [self exec:^{
-        [self.controller getCircuits:^(NSArray<TORCircuit *> * _Nonnull circuits) {
+        [self.controller getCircuits:^(NSArray<AnonCircuit *> * _Nonnull circuits) {
             NSLog(@"circuits=%@", circuits);
 
-            for (TORCircuit *circuit in circuits)
+            for (AnonCircuit *circuit in circuits)
             {
-                for (TORNode *node in circuit.nodes) {
+                for (AnonNode *node in circuit.nodes) {
                     XCTAssert(node.fingerprint.length > 0, @"A circuit should have a fingerprint.");
                     XCTAssert(node.ipv4Address.length > 0 || node.ipv6Address.length > 0, @"A circuit should have an IPv4 or IPv6 address.");
                 }
@@ -156,7 +156,7 @@
 
 - (void)exec:(void (^)(void))callback
 {
-    TORController *controller = self.controller;
+    AnonController *controller = self.controller;
 
     [controller authenticateWithData:self.cookie completion:^(BOOL success, NSError * _Nullable error) {
         XCTAssertTrue(success);

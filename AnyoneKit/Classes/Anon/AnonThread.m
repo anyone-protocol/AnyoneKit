@@ -1,29 +1,29 @@
 //
-//  TORThread.m
-//  Tor
+//  AnonThread.m
+//  AnyoneKit
 //
 //  Created by Conrad Kramer on 7/19/15.
 //
 
 #import <feature/api/tor_api.h>
 
-#import "TORThread.h"
-#import "TORLogging.h"
-#import "TORConfiguration.h"
+#import "AnonThread.h"
+#import "AnonLogging.h"
+#import "AnonConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-static __weak TORThread *_thread = nil;
+static __weak AnonThread *_thread = nil;
 
-@interface TORThread ()
+@interface AnonThread ()
 
 @property (nonatomic, readonly, copy, nullable) NSArray<NSString *> *arguments;
 
 @end
 
-@implementation TORThread
+@implementation AnonThread
 
-+ (nullable TORThread *)activeThread {
++ (nullable AnonThread *)activeThread {
     return _thread;
 }
 
@@ -31,12 +31,12 @@ static __weak TORThread *_thread = nil;
     return [self initWithArguments:nil];
 }
 
-- (instancetype)initWithConfiguration:(nullable TORConfiguration *)configuration {
+- (instancetype)initWithConfiguration:(nullable AnonConfiguration *)configuration {
     return [self initWithArguments:[configuration compile]];
 }
 
 - (instancetype)initWithArguments:(nullable NSArray<NSString *> *)arguments {
-    NSAssert(_thread == nil, @"There can only be one TORThread per process");
+    NSAssert(_thread == nil, @"There can only be one AnonThread per process");
     self = [super init];
     if (!self)
         return nil;
@@ -44,8 +44,8 @@ static __weak TORThread *_thread = nil;
     _thread = self;
     _arguments = [arguments copy];
     
-    self.name = @"Tor";
-    
+    self.name = @"Anon";
+
     return self;
 }
 

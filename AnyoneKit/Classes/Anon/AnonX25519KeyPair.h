@@ -1,20 +1,19 @@
 //
-//  TORX25519KeyPair.h
-//  Tor
+//  AnonX25519KeyPair.h
+//  AnyoneKit
 //
 //  Created by Benjamin Erhart on 11.10.21.
 //
 
 #import <Foundation/Foundation.h>
-#import "TORAuthKey.h"
+#import "AnonAuthKey.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  Class to generate or hold a X25519 public/private key pair encoded in BASE32.
  */
-NS_SWIFT_NAME(TorX25519KeyPair)
-@interface TORX25519KeyPair : NSObject
+@interface AnonX25519KeyPair : NSObject
 
 
 /**
@@ -29,7 +28,7 @@ NS_SWIFT_NAME(TorX25519KeyPair)
 
 
 /**
- Generate a new X25519 key pair using Tor's implementation.
+ Generate a new X25519 key pair using Anon's implementation.
 
  On iOS 13 and up, another option is also available: CryptoKit's \c Curve25519.KeyAggreement.PrivateKey
  */
@@ -58,28 +57,28 @@ NS_SWIFT_NAME(TorX25519KeyPair)
 
 
 /**
- Create a private \c TORAuthKey from this key material using the provided domain.
+ Create a private \c AnonAuthKey from this key material using the provided domain.
 
  @param domain The domain name, this private key is for. Must include the \c .onion TLD!
- @returns the private \c TORAuthKey of this key pair's private key  or \c nil if the \c domain is empty or this class doesn't contain a private key.
+ @returns the private \c AnonAuthKey of this key pair's private key  or \c nil if the \c domain is empty or this class doesn't contain a private key.
 */
-- (nullable TORAuthKey *)getPrivateAuthKeyForDomain:(nonnull NSString *)domain;
+- (nullable AnonAuthKey *)getPrivateAuthKeyForDomain:(nonnull NSString *)domain;
 
 /**
- Create a private \c TORAuthKey from this key material using the provided domain.
+ Create a private \c AnonAuthKey from this key material using the provided domain.
 
  @param url The domain, this private key is for.
- @returns the private \c TORAuthKey of this key pair's private key  or \c nil if this class doesn't contain a private key.
+ @returns the private \c AnonAuthKey of this key pair's private key  or \c nil if this class doesn't contain a private key.
 */
-- (nullable TORAuthKey *)getPrivateAuthKeyForUrl:(nonnull NSURL *)url;
+- (nullable AnonAuthKey *)getPrivateAuthKeyForUrl:(nonnull NSURL *)url;
 
 /**
- Create a public \c TORAuthKey from this key material using the provided name.
+ Create a public \c AnonAuthKey from this key material using the provided name.
 
- @param name The name used to store that \c TORAuthKey, without the extension!
- @returns the public \c TORAuthKey of this key pair's public key or \c nil if the \c name is empty or this class doesn't contain a public key.
+ @param name The name used to store that \c AnonAuthKey, without the extension!
+ @returns the public \c AnonAuthKey of this key pair's public key or \c nil if the \c name is empty or this class doesn't contain a public key.
  */
-- (nullable TORAuthKey *)getPublicAuthKeyWithName:(nonnull NSString *)name;
+- (nullable AnonAuthKey *)getPublicAuthKeyWithName:(nonnull NSString *)name;
 
 
 /**

@@ -1,20 +1,19 @@
 //
-//  TOROnionAuth.h
-//  Tor
+//  AnonOnionAuth.h
+//  AnyoneKit
 //
 //  Created by Benjamin Erhart on 29.09.21.
 //
 
 #import <Foundation/Foundation.h>
-#import "TORAuthKey.h"
+#import "AnonAuthKey.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  Support for Onion v3 service authentication configuration files.
  */
-NS_SWIFT_NAME(TorOnionAuth)
-@interface TOROnionAuth : NSObject
+@interface AnonOnionAuth : NSObject
 
 
 /**
@@ -32,7 +31,7 @@ NS_SWIFT_NAME(TorOnionAuth)
 
  @see -directory
  */
-@property (nonatomic, nonnull, readonly) NSArray<TORAuthKey *> *keys;
+@property (nonatomic, nonnull, readonly) NSArray<AnonAuthKey *> *keys;
 
 
 /**
@@ -84,7 +83,7 @@ NS_SWIFT_NAME(TorOnionAuth)
 
  @returns \c YES on success, \c NO on failure.
 */
-- (BOOL)set:(TORAuthKey *)key;
+- (BOOL)set:(AnonAuthKey *)key;
 
 /**
  Remove the key at the specified index.

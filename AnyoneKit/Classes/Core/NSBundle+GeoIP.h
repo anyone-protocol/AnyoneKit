@@ -1,6 +1,6 @@
 //
 //  NSBundle+GeoIP.h
-//  Tor
+//  AnyoneKit
 //
 //  Created by Benjamin Erhart on 02.12.21.
 //

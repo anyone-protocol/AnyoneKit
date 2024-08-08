@@ -1,17 +1,17 @@
 //
-//  TORConfigurationTests.m
-//  Tor
+//  AnonConfigurationTests.m
+//  AnyoneKit
 //
 //  Created by Conrad Kramer on 8/11/15.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface TORConfigurationTests : XCTestCase
+@interface AnonConfigurationTests : XCTestCase
 
 @end
 
-@implementation TORConfigurationTests
+@implementation AnonConfigurationTests
 
 - (void)setUp {
     [super setUp];

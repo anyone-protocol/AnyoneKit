@@ -1,15 +1,15 @@
 //
-//  TORConfiguration.m
-//  Tor
+//  AnonConfiguration.m
+//  AnyoneKit
 //
 //  Created by Conrad Kramer on 8/10/15.
 //
 
-#import "TORConfiguration.h"
+#import "AnonConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@implementation TORConfiguration
+@implementation AnonConfiguration
 
 - (NSMutableDictionary *)options
 {

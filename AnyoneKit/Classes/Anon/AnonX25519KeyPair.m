@@ -1,17 +1,17 @@
 //
-//  TORX25519KeyPair.m
-//  Tor
+//  AnonX25519KeyPair.m
+//  AnyoneKit
 //
 //  Created by Benjamin Erhart on 11.10.21.
 //
 
-#import "TORX25519KeyPair.h"
+#import "AnonX25519KeyPair.h"
 #import <lib/malloc/malloc.h>
 #import <lib/crypt_ops/crypto_curve25519.h>
 #import <lib/encoding/binascii.h>
 
 
-@implementation TORX25519KeyPair
+@implementation AnonX25519KeyPair
 
 
 - (instancetype)init
@@ -24,11 +24,11 @@
 
         curve25519_keypair_generate(keypair, 0);
 
-        _privateKey = [TORX25519KeyPair base32Encode:[
+        _privateKey = [AnonX25519KeyPair base32Encode:[
             NSData dataWithBytes:keypair->seckey.secret_key
             length:sizeof(keypair->seckey.secret_key)]];
 
-        _publicKey = [TORX25519KeyPair base32Encode:[
+        _publicKey = [AnonX25519KeyPair base32Encode:[
             NSData dataWithBytes:keypair->pubkey.public_key
             length:sizeof(keypair->pubkey.public_key)]];
 
@@ -53,8 +53,8 @@
 {
     if ((self = [super init]))
     {
-        _privateKey = [TORX25519KeyPair base32Encode:privateKey];
-        _publicKey = [TORX25519KeyPair base32Encode:publicKey];
+        _privateKey = [AnonX25519KeyPair base32Encode:privateKey];
+        _publicKey = [AnonX25519KeyPair base32Encode:publicKey];
     }
 
     return self;
@@ -63,7 +63,7 @@
 
 // MARK: Public Methods
 
-- (nullable TORAuthKey *)getPrivateAuthKeyForDomain:(nonnull NSString *)domain
+- (nullable AnonAuthKey *)getPrivateAuthKeyForDomain:(nonnull NSString *)domain
 {
     if (domain.length < 1) return nil;
 
@@ -77,22 +77,22 @@
     return [self getPrivateAuthKeyForUrl:url];
 }
 
-- (nullable TORAuthKey *)getPrivateAuthKeyForUrl:(nonnull NSURL *)url
+- (nullable AnonAuthKey *)getPrivateAuthKeyForUrl:(nonnull NSURL *)url
 {
     NSString *privateKey = _privateKey;
     if (!privateKey) return nil;
 
-    return [[TORAuthKey alloc] initPrivate:privateKey forDomain:url];
+    return [[AnonAuthKey alloc] initPrivate:privateKey forDomain:url];
 }
 
-- (nullable TORAuthKey *)getPublicAuthKeyWithName:(nonnull NSString *)name
+- (nullable AnonAuthKey *)getPublicAuthKeyWithName:(nonnull NSString *)name
 {
     NSString *publicKey = _publicKey;
     if (!publicKey) return nil;
 
     if (name.length < 1) return nil;
 
-    return [[TORAuthKey alloc] initPublic:publicKey withName:name];
+    return [[AnonAuthKey alloc] initPublic:publicKey withName:name];
 }
 
 

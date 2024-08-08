@@ -1,26 +1,26 @@
 //
-//  TORLogging.m
-//  Tor
+//  AnonLogging.m
+//  AnyoneKit
 //
 //  Created by Benjamin Erhart on 9/9/17.
 //
 
-#import "TORLogging.h"
+#import "AnonLogging.h"
 
 #import <event2/event.h>
 #import <asl.h>
-// XXXX This is not an exposed or supported Tor API.
-// XXXX If Tor changes this header, then this code might break.
+// XXXX This is not an exposed or supported Anon API.
+// XXXX If Anon changes this header, then this code might break.
 #import <lib/log/log.h>
 
-tor_log_cb tor_log_callback;
-tor_log_cb event_log_callback;
+anon_log_cb anon_log_callback;
+anon_log_cb event_log_callback;
 
 NS_ASSUME_NONNULL_BEGIN
 
-static char *subsystem = "org.torproject.Tor";
+static char *subsystem = "io.anyone.Anon";
 
-static inline const char *TORLegacyLevelFromOSLogType(os_log_type_t type) {
+static inline const char *AnonLegacyLevelFromOSLogType(os_log_type_t type) {
     switch (type) {
         case OS_LOG_TYPE_ERROR:
             return "3";
@@ -35,7 +35,7 @@ static inline const char *TORLegacyLevelFromOSLogType(os_log_type_t type) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
-static void TORLegacyLog(os_log_type_t type, const char *msg) {
+static void AnonLegacyLog(os_log_type_t type, const char *msg) {
     static dispatch_once_t onceToken;
     static aslclient log = NULL;
     dispatch_once(&onceToken, ^{
@@ -47,7 +47,7 @@ static void TORLegacyLog(os_log_type_t type, const char *msg) {
 
     aslmsg message = asl_new(ASL_TYPE_MSG);
     if (message != NULL) {
-        if (asl_set(message, ASL_KEY_LEVEL, TORLegacyLevelFromOSLogType(type)) == 0 &&
+        if (asl_set(message, ASL_KEY_LEVEL, AnonLegacyLevelFromOSLogType(type)) == 0 &&
             asl_set(message, ASL_KEY_MSG, msg) == 0 &&
             asl_set(message, ASL_KEY_READ_UID, read_uid) == 0) {
             asl_send(log, message);
@@ -58,7 +58,7 @@ static void TORLegacyLog(os_log_type_t type, const char *msg) {
 
 #pragma clang diagnostic pop
 
-static inline os_log_type_t TORLogTypeFromEventSeverity(int severity) {
+static inline os_log_type_t AnonLogTypeFromEventSeverity(int severity) {
     switch (severity) {
         case EVENT_LOG_ERR:
         case EVENT_LOG_WARN:
@@ -72,8 +72,8 @@ static inline os_log_type_t TORLogTypeFromEventSeverity(int severity) {
     }
 }
 
-static void TOREventLogCallback(int severity, const char *msg) {
-    os_log_type_t type = TORLogTypeFromEventSeverity(severity);
+static void AnonEventLogCallback(int severity, const char *msg) {
+    os_log_type_t type = AnonLogTypeFromEventSeverity(severity);
 
     if (event_log_callback) {
         event_log_callback(type, msg);
@@ -86,11 +86,11 @@ static void TOREventLogCallback(int severity, const char *msg) {
 
         os_log_with_type(log, type, "%{public}s", msg);
     } else {
-        TORLegacyLog(type, msg);
+        AnonLegacyLog(type, msg);
     }
 }
 
-static const char * __nullable TORCategoryForDomain(uint32_t domain) {
+static const char * __nullable AnonCategoryForDomain(uint32_t domain) {
     switch (domain) {
         case LD_GENERAL:
             return "general";
@@ -145,7 +145,7 @@ static const char * __nullable TORCategoryForDomain(uint32_t domain) {
     }
 }
 
-static inline os_log_type_t TORLogTypeFromSeverity(int severity) {
+static inline os_log_type_t AnonLogTypeFromSeverity(int severity) {
     switch (severity) {
         case LOG_ERR:
             return OS_LOG_TYPE_FAULT;
@@ -161,15 +161,15 @@ static inline os_log_type_t TORLogTypeFromSeverity(int severity) {
     }
 }
 
-static void TORLogCallback(int severity, uint64_t domain, const char *msg) {
+static void AnonLogCallback(int severity, uint64_t domain, const char *msg) {
     if (domain & LD_NOCB) {
         return;
     }
 
-    os_log_type_t type = TORLogTypeFromSeverity(severity);
+    os_log_type_t type = AnonLogTypeFromSeverity(severity);
 
-    if (tor_log_callback) {
-        tor_log_callback(type, msg);
+    if (anon_log_callback) {
+        anon_log_callback(type, msg);
     } else if (@available(iOS 10.0, macOS 10.12, *)) {
         int index = 0;
         while (domain >>= 1) {
@@ -182,40 +182,40 @@ static void TORLogCallback(int severity, uint64_t domain, const char *msg) {
         static os_log_t logs[N_LOGGING_DOMAINS] = { NULL };
         os_log_t log = logs[index];
         if (log == NULL) {
-            log = os_log_create(subsystem, TORCategoryForDomain(1u << index));
+            log = os_log_create(subsystem, AnonCategoryForDomain(1u << index));
             logs[index] = log;
         }
 
         os_log_with_type(log, type, "%{public}s", msg);
     } else {
-        TORLegacyLog(type, msg);
+        AnonLegacyLog(type, msg);
     }
 }
 
-void TORInstallEventLogging(void) {
+void AnonInstallEventLogging(void) {
     event_log_callback = NULL;
-    event_set_log_callback(TOREventLogCallback);
+    event_set_log_callback(AnonEventLogCallback);
     event_enable_debug_logging(EVENT_DBG_ALL);
 }
 
-void TORInstallEventLoggingCallback(tor_log_cb cb) {
+void AnonInstallEventLoggingCallback(anon_log_cb cb) {
     event_log_callback = cb;
-    event_set_log_callback(TOREventLogCallback);
+    event_set_log_callback(AnonEventLogCallback);
     event_enable_debug_logging(EVENT_DBG_ALL);
 }
 
-void TORInstallTorLogging(void) {
-    tor_log_callback = NULL;
+void AnonInstallAnonLogging(void) {
+    anon_log_callback = NULL;
     log_severity_list_t list;
     set_log_severity_config(LOG_DEBUG, LOG_ERR, &list);
-    add_callback_log(&list, TORLogCallback);
+    add_callback_log(&list, AnonLogCallback);
 }
 
-extern void TORInstallTorLoggingCallback(tor_log_cb cb) {
-    tor_log_callback = cb;
+extern void AnonInstallAnonLoggingCallback(anon_log_cb cb) {
+    anon_log_callback = cb;
     log_severity_list_t list;
     set_log_severity_config(LOG_DEBUG, LOG_ERR, &list);
-    add_callback_log(&list, TORLogCallback);
+    add_callback_log(&list, AnonLogCallback);
 }
 
 NS_ASSUME_NONNULL_END

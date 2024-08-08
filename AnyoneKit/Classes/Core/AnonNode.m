@@ -1,14 +1,14 @@
 //
-//  TORNode.m
-//  Tor
+//  AnonNode.m
+//  AnyoneKit
 //
 //  Created by Benjamin Erhart on 09.12.19.
 //
 
-#import "TORNode.h"
+#import "AnonNode.h"
 #import "NSCharacterSet+PredefinedSets.h"
 
-@implementation TORNode
+@implementation AnonNode
 
 // MARK: Class Properties
 
@@ -44,12 +44,12 @@ static NSRegularExpression *_ipv6Regex;
 
 // MARK: Class Methods:
 
-+ (NSArray<TORNode *>  * _Nonnull)parseFromNsString:(NSString * _Nullable)nsString exitOnly:(BOOL)exitOnly
++ (NSArray<AnonNode *>  * _Nonnull)parseFromNsString:(NSString * _Nullable)nsString exitOnly:(BOOL)exitOnly
 {
-    NSMutableArray<TORNode *> *nodes = [NSMutableArray new];
+    NSMutableArray<AnonNode *> *nodes = [NSMutableArray new];
     NSMutableArray<NSString *> *raw = [NSMutableArray new];
 
-    // A typical NS string for a Tor node might look like this:
+    // A typical NS string for a Anon node might look like this:
     //  (Line breaks are not for readability but contained in original!)
     //
     // r ForPrivacyNET ADb6NqtDX9XQ9kBiZjaGfr+3LGg epP7Gxm+NYhwC3V7SPORQCPoVgc 2022-11-18 00:01:48 185.220.101.33 10133 0
@@ -68,7 +68,7 @@ static NSRegularExpression *_ipv6Regex;
             {
                 if (!exitOnly || [raw.lastObject rangeOfString:@"Exit"].location != NSNotFound)
                 {
-                    [nodes addObject:[[TORNode alloc] initFromNsString:[raw componentsJoinedByString:@"\n"]]];
+                    [nodes addObject:[[AnonNode alloc] initFromNsString:[raw componentsJoinedByString:@"\n"]]];
                 }
 
                 raw = [[NSMutableArray alloc] initWithObjects:line, nil];
@@ -82,7 +82,7 @@ static NSRegularExpression *_ipv6Regex;
 
     if (raw.count > 0 && (!exitOnly || [raw.lastObject rangeOfString:@"Exit"].location != NSNotFound))
     {
-        [nodes addObject:[[TORNode alloc] initFromNsString:[raw componentsJoinedByString:@"\n"]]];
+        [nodes addObject:[[AnonNode alloc] initFromNsString:[raw componentsJoinedByString:@"\n"]]];
     }
 
     return nodes;
@@ -149,7 +149,7 @@ static NSRegularExpression *_ipv6Regex;
     NSArray<NSTextCheckingResult *> *matches;
     NSRange range = NSMakeRange(0, response.length);
 
-    matches = [TORNode.ipv4Regex matchesInString:response options:0
+    matches = [AnonNode.ipv4Regex matchesInString:response options:0
                                             range:range];
 
     if (matches.firstObject.numberOfRanges > 0)
@@ -157,7 +157,7 @@ static NSRegularExpression *_ipv6Regex;
         self.ipv4Address = [response substringWithRange:[matches.firstObject rangeAtIndex:0]];
     }
 
-    matches = [TORNode.ipv6Regex matchesInString:response options:0
+    matches = [AnonNode.ipv6Regex matchesInString:response options:0
                                            range:range];
 
     if (matches.firstObject.numberOfRanges > 0)
@@ -239,7 +239,7 @@ static NSRegularExpression *_ipv6Regex;
         return NO;
     }
 
-    return [self.fingerprint isEqualToString:(NSString * _Nonnull)((TORNode *)other).fingerprint];
+    return [self.fingerprint isEqualToString:(NSString * _Nonnull)((AnonNode *)other).fingerprint];
 }
 
 - (NSUInteger)hash

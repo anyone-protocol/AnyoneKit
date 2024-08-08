@@ -1,6 +1,6 @@
 //
-//  TORThread.h
-//  Tor
+//  AnonThread.h
+//  AnyoneKit
 //
 //  Created by Conrad Kramer on 7/19/15.
 //
@@ -9,18 +9,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class TORConfiguration;
+@class AnonConfiguration;
 
-NS_SWIFT_NAME(TorThread)
-@interface TORThread : NSThread
+@interface AnonThread : NSThread
 
 #if __has_feature(objc_class_property)
-@property (class, readonly, nullable) TORThread *activeThread;
+@property (class, readonly, nullable) AnonThread *activeThread;
 #else
-+ (nullable TORThread *)activeThread;
++ (nullable AnonThread *)activeThread;
 #endif
 
-- (instancetype)initWithConfiguration:(nullable TORConfiguration *)configuration;
+- (instancetype)initWithConfiguration:(nullable AnonConfiguration *)configuration;
 - (instancetype)initWithArguments:(nullable NSArray<NSString *> *)arguments NS_DESIGNATED_INITIALIZER;
 
 @end

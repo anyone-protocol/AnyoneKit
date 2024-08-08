@@ -1,14 +1,14 @@
 //
-//  TORCircuit.m
-//  Tor
+//  AnonCircuit.m
+//  AnyoneKit
 //
 //  Created by Benjamin Erhart on 11.12.19.
 //
 
-#import "TORCircuit.h"
+#import "AnonCircuit.h"
 #import "NSCharacterSet+PredefinedSets.h"
 
-@implementation TORCircuit
+@implementation AnonCircuit
 
 
 // MARK: Class Properties
@@ -300,15 +300,15 @@ static NSDateFormatter *_timestampFormatter;
     return _timestampFormatter;
 }
 
-+ (NSArray<TORCircuit *> *)circuitsFromString:(NSString *)circuitsString
++ (NSArray<AnonCircuit *> *)circuitsFromString:(NSString *)circuitsString
 {
-    NSMutableArray<TORCircuit *> *circuits = [NSMutableArray new];
+    NSMutableArray<AnonCircuit *> *circuits = [NSMutableArray new];
 
     for (NSString *circuitString in [circuitsString componentsSeparatedByString:@"\r\n"]) {
         if (circuitString.length > 0)
         {
             [circuits addObject:
-             [[TORCircuit alloc] initFromString:circuitString]];
+             [[AnonCircuit alloc] initFromString:circuitString]];
         }
     }
 
@@ -328,7 +328,7 @@ static NSDateFormatter *_timestampFormatter;
 
         NSRange range = NSMakeRange(0, circuitString.length);
 
-        NSTextCheckingResult *match = [TORCircuit.mainInfoRegex
+        NSTextCheckingResult *match = [AnonCircuit.mainInfoRegex
                                                     matchesInString:circuitString options:0
                                                     range:range].firstObject;
         
@@ -344,7 +344,7 @@ static NSDateFormatter *_timestampFormatter;
         
         if (match && [match rangeAtIndex:3].location != NSNotFound)
         {
-            NSMutableArray<TORNode *> *nodes = [NSMutableArray new];
+            NSMutableArray<AnonNode *> *nodes = [NSMutableArray new];
             
             NSString *path = [circuitString substringWithRange:[match rangeAtIndex:3]];
 
@@ -353,14 +353,14 @@ static NSDateFormatter *_timestampFormatter;
             for (NSString *nodeString in nodesStrings)
             {
                 [nodes addObject:
-                [[TORNode alloc] initFromString:
+                [[AnonNode alloc] initFromString:
                     [nodeString stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceCharacterSet]]];
             }
 
             _nodes = nodes;
         }
         
-        match = [[TORCircuit regexForOption:@"BUILD_FLAGS"]
+        match = [[AnonCircuit regexForOption:@"BUILD_FLAGS"]
                    matchesInString:circuitString options:0 range:range].firstObject;
 
         if (match && [match rangeAtIndex:1].location != NSNotFound)
@@ -369,7 +369,7 @@ static NSDateFormatter *_timestampFormatter;
                            componentsSeparatedByString:@","];
         }
 
-        match = [[TORCircuit regexForOption:@"PURPOSE"]
+        match = [[AnonCircuit regexForOption:@"PURPOSE"]
                     matchesInString:circuitString options:0 range:range].firstObject;
 
         if (match && [match rangeAtIndex:1].location != NSNotFound)
@@ -377,7 +377,7 @@ static NSDateFormatter *_timestampFormatter;
             _purpose = [circuitString substringWithRange:[match rangeAtIndex:1]];
         }
 
-        match = [[TORCircuit regexForOption:@"HS_STATE"]
+        match = [[AnonCircuit regexForOption:@"HS_STATE"]
                     matchesInString:circuitString options:0 range:range].firstObject;
 
         if (match && [match rangeAtIndex:1].location != NSNotFound)
@@ -385,7 +385,7 @@ static NSDateFormatter *_timestampFormatter;
             _hsState = [circuitString substringWithRange:[match rangeAtIndex:1]];
         }
 
-        match = [[TORCircuit regexForOption:@"REND_QUERY"]
+        match = [[AnonCircuit regexForOption:@"REND_QUERY"]
                     matchesInString:circuitString options:0 range:range].firstObject;
 
         if (match && [match rangeAtIndex:1].location != NSNotFound)
@@ -393,16 +393,16 @@ static NSDateFormatter *_timestampFormatter;
             _rendQuery = [circuitString substringWithRange:[match rangeAtIndex:1]];
         }
 
-        match = [[TORCircuit regexForOption:@"TIME_CREATED"]
+        match = [[AnonCircuit regexForOption:@"TIME_CREATED"]
                     matchesInString:circuitString options:0 range:range].firstObject;
 
         if (match && [match rangeAtIndex:1].location != NSNotFound)
         {
-            _timeCreated = [TORCircuit.timestampFormatter dateFromString:
+            _timeCreated = [AnonCircuit.timestampFormatter dateFromString:
                             [circuitString substringWithRange:[match rangeAtIndex:1]]];
         }
 
-        match = [[TORCircuit regexForOption:@"REASON"]
+        match = [[AnonCircuit regexForOption:@"REASON"]
                     matchesInString:circuitString options:0 range:range].firstObject;
 
         if (match && [match rangeAtIndex:1].location != NSNotFound)
@@ -410,7 +410,7 @@ static NSDateFormatter *_timestampFormatter;
             _reason = [circuitString substringWithRange:[match rangeAtIndex:1]];
         }
 
-        match = [[TORCircuit regexForOption:@"REMOTE_REASON"]
+        match = [[AnonCircuit regexForOption:@"REMOTE_REASON"]
                     matchesInString:circuitString options:0 range:range].firstObject;
 
         if (match && [match rangeAtIndex:1].location != NSNotFound)
@@ -418,7 +418,7 @@ static NSDateFormatter *_timestampFormatter;
             _remoteReason = [circuitString substringWithRange:[match rangeAtIndex:1]];
         }
 
-        match = [[TORCircuit regexForOption:@"SOCKS_USERNAME"]
+        match = [[AnonCircuit regexForOption:@"SOCKS_USERNAME"]
                     matchesInString:circuitString options:0 range:range].firstObject;
 
         if (match && [match rangeAtIndex:1].location != NSNotFound)
@@ -427,7 +427,7 @@ static NSDateFormatter *_timestampFormatter;
                               stringByTrimmingCharactersInSet:NSCharacterSet.doubleQuote];
         }
 
-        match = [[TORCircuit regexForOption:@"SOCKS_PASSWORD"]
+        match = [[AnonCircuit regexForOption:@"SOCKS_PASSWORD"]
                     matchesInString:circuitString options:0 range:range].firstObject;
 
         if (match && [match rangeAtIndex:1].location != NSNotFound)
@@ -455,7 +455,7 @@ static NSDateFormatter *_timestampFormatter;
         _raw = [coder decodeObjectOfClass:NSString.class forKey:@"raw"];
         _circuitId = [coder decodeObjectOfClass:NSString.class forKey:@"circuitId"];
         _status = [coder decodeObjectOfClass:NSString.class forKey:@"status"];
-        _nodes = [coder decodeObjectOfClasses:[NSSet setWithArray:@[NSArray.class, TORNode.class]] forKey:@"nodes"];
+        _nodes = [coder decodeObjectOfClasses:[NSSet setWithArray:@[NSArray.class, AnonNode.class]] forKey:@"nodes"];
         _buildFlags = [coder decodeObjectOfClasses:[NSSet setWithArray:@[NSArray.class, NSString.class]] forKey:@"buildFlags"];
         _purpose = [coder decodeObjectOfClass:NSString.class forKey:@"purpose"];
         _hsState = [coder decodeObjectOfClass:NSString.class forKey:@"hsState"];

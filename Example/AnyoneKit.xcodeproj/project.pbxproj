@@ -13,13 +13,12 @@
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
-		A0CADB502C63B7570037A37C /* AnyoneKit-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0CADB462C63B7570037A37C /* AnyoneKit-Info.plist */; };
 		A0CADB512C63B7570037A37C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CADB472C63B7570037A37C /* main.m */; };
 		A0CADB522C63B7570037A37C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CADB492C63B7570037A37C /* AppDelegate.m */; };
 		A0CADB532C63B7570037A37C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CADB4B2C63B7570037A37C /* ViewController.m */; };
 		A0CADB572C63B7870037A37C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0CADB552C63B7870037A37C /* Main.storyboard */; };
-		A0F008FC27906DBA0073D36D /* TORConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F008FA27906DBA0073D36D /* TORConfigurationTests.m */; };
-		A0F008FD27906DBA0073D36D /* TORControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F008FB27906DBA0073D36D /* TORControllerTests.m */; };
+		A0F008FC27906DBA0073D36D /* AnonConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F008FA27906DBA0073D36D /* AnonConfigurationTests.m */; };
+		A0F008FD27906DBA0073D36D /* AnonControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F008FB27906DBA0073D36D /* AnonControllerTests.m */; };
 		A0F0090D279070B40073D36D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F0090C279070B40073D36D /* AppDelegate.m */; };
 		A0F00910279070B40073D36D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F0090F279070B40073D36D /* ViewController.m */; };
 		A0F00915279070B40073D36D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F00913279070B40073D36D /* Main.storyboard */; };
@@ -80,8 +79,8 @@
 		A0CADB5C2C63B9510037A37C /* mmap-cache.patch */ = {isa = PBXFileReference; lastKnownFileType = text; name = "mmap-cache.patch"; path = "../AnyoneKit/mmap-cache.patch"; sourceTree = "<group>"; };
 		A0F008F727906CA30073D36D /* Podfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
 		A0F008F827906CA30073D36D /* Podfile */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A0F008FA27906DBA0073D36D /* TORConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TORConfigurationTests.m; sourceTree = "<group>"; };
-		A0F008FB27906DBA0073D36D /* TORControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TORControllerTests.m; sourceTree = "<group>"; };
+		A0F008FA27906DBA0073D36D /* AnonConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnonConfigurationTests.m; sourceTree = "<group>"; };
+		A0F008FB27906DBA0073D36D /* AnonControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnonControllerTests.m; sourceTree = "<group>"; };
 		A0F008FE27906F620073D36D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		A0F00909279070B40073D36D /* AnyoneKit-Example-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnyoneKit-Example-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F0090B279070B40073D36D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -174,8 +173,8 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A0F008FA27906DBA0073D36D /* TORConfigurationTests.m */,
-				A0F008FB27906DBA0073D36D /* TORControllerTests.m */,
+				A0F008FA27906DBA0073D36D /* AnonConfigurationTests.m */,
+				A0F008FB27906DBA0073D36D /* AnonControllerTests.m */,
 				6003F5B7195388D20070C39A /* Tests-Info.plist */,
 				606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */,
 			);
@@ -321,9 +320,9 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				CLASSPREFIX = TOR;
+				CLASSPREFIX = Anon;
 				LastUpgradeCheck = 1540;
-				ORGANIZATIONNAME = "Benjamin Erhart";
+				ORGANIZATIONNAME = "ATOR Labs AS";
 				TargetAttributes = {
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -359,7 +358,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0CADB502C63B7570037A37C /* AnyoneKit-Info.plist in Resources */,
 				A0CADB572C63B7870037A37C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,8 +499,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0F008FC27906DBA0073D36D /* TORConfigurationTests.m in Sources */,
-				A0F008FD27906DBA0073D36D /* TORControllerTests.m in Sources */,
+				A0F008FC27906DBA0073D36D /* AnonConfigurationTests.m in Sources */,
+				A0F008FD27906DBA0073D36D /* AnonControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,6 +686,8 @@
 			baseConfigurationReference = CB2CFEF1E61396F316D03428 /* Pods-AnyoneKit-Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -702,8 +702,8 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyoneKit_Example.app/AnyoneKit_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -713,6 +713,8 @@
 			baseConfigurationReference = BA2522C350A1D42E715CA3DB /* Pods-AnyoneKit-Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -723,8 +725,8 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyoneKit_Example.app/AnyoneKit_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;

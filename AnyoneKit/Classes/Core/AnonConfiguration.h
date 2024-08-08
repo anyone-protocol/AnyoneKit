@@ -1,6 +1,6 @@
 //
-//  TORConfiguration.h
-//  Tor
+//  AnonConfiguration.h
+//  AnyoneKit
 //
 //  Created by Conrad Kramer on 8/10/15.
 //
@@ -9,8 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-NS_SWIFT_NAME(TorConfiguration)
-@interface TORConfiguration : NSObject
+@interface AnonConfiguration : NSObject
 
 @property (nonatomic, copy, nullable) NSURL *dataDirectory;
 @property (nonatomic, copy, nullable) NSURL *cacheDirectory;

@@ -1,6 +1,6 @@
 //
-//  TORAuthKey.h
-//  Tor
+//  AnonAuthKey.h
+//  AnyoneKit
 //
 //  Created by Benjamin Erhart on 29.09.21.
 //
@@ -12,8 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The representation of one private or public v3 onion service authentication key.
  */
-NS_SWIFT_NAME(TorAuthKey)
-@interface TORAuthKey : NSObject
+@interface AnonAuthKey : NSObject
 
 /**
  The location on disk, where this data was read from/will be written to.
@@ -48,9 +47,9 @@ Currently only the \c descriptor type is supported. This class will set this val
 /**
  The actual public OR private key.
 
- This class doesn't enforce it, but Tor wants this to be in a BASE32 encoded format.
+ This class doesn't enforce it, but Anon wants this to be in a BASE32 encoded format.
 
- Make sure, it is of the type \c x25519, as this is currently the only supported type by Tor and by this class!
+ Make sure, it is of the type \c x25519, as this is currently the only supported type by Anon and by this class!
  */
 @property (nonatomic, readonly, nonnull) NSString *key;
 
@@ -123,7 +122,7 @@ Currently only the \c descriptor type is supported. This class will set this val
 /**
  Keys are considered equal, if their file URLs match.
  */
-- (BOOL)isEqualToAuthKey:(TORAuthKey *)authKey;
+- (BOOL)isEqualToAuthKey:(AnonAuthKey *)authKey;
 
 
 /**

@@ -1,6 +1,6 @@
 //
-//  TORCircuit.h
-//  Tor
+//  AnonCircuit.h
+//  AnyoneKit
 //
 //  Created by Benjamin Erhart on 11.12.19.
 //
@@ -10,12 +10,11 @@
 //  Chapter 4.1.1 Circuit status changed
 
 #import <Foundation/Foundation.h>
-#import "TORNode.h"
+#import "AnonNode.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-NS_SWIFT_NAME(TorCircuit)
-@interface TORCircuit : NSObject<NSSecureCoding>
+@interface AnonCircuit : NSObject<NSSecureCoding>
 
 /**
  Regular expression to identify and extract ID, status and circuit path consisting of "LongNames".
@@ -283,9 +282,9 @@ The circuit ID. Currently only numbers beginning with "1" but Tor spec says, tha
 @property (readonly, nullable) NSString *status;
 
 /**
- The circuit path as a list of @c TORNode objects.
+ The circuit path as a list of @c AnonNode objects.
  */
-@property (readonly, nullable) NSArray<TORNode *> *nodes;
+@property (readonly, nullable) NSArray<AnonNode *> *nodes;
 
 /**
  Build flags of the circuit. Can be any of @c buildFlagOneHopTunnel, @c buildFlagIsInternal,
@@ -350,13 +349,13 @@ The circuit ID. Currently only numbers beginning with "1" but Tor spec says, tha
 
 /**
  The @c socksUsername and @c socksPassword fields indicate the credentials that were used by a
- SOCKS client to connect to Tor’s SOCKS port and initiate this circuit.
+ SOCKS client to connect to Anon’s SOCKS port and initiate this circuit.
  */
 @property (readonly, nullable) NSString *socksUsername;
 
 /**
 The @c socksUsername and @c socksPassword fields indicate the credentials that were used by a
-SOCKS client to connect to Tor’s SOCKS port and initiate this circuit.
+SOCKS client to connect to Anon’s SOCKS port and initiate this circuit.
 */
 @property (readonly, nullable) NSString *socksPassword;
 
@@ -368,7 +367,7 @@ See https://torproject.gitlab.io/torspec/control-spec.html#getinfo
 
 @param circuitsString A string as returned by "GETINFO circuit-status".
 */
-+ (NSArray<TORCircuit *> *)circuitsFromString:(NSString *)circuitsString;
++ (NSArray<AnonCircuit *> *)circuitsFromString:(NSString *)circuitsString;
 
 
 - (instancetype)initFromString:(NSString *)circuitString;

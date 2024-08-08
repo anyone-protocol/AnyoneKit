@@ -1,13 +1,13 @@
 //
-//  TORAuthKey.m
-//  Tor
+//  AnonAuthKey.m
+//  AnyoneKit
 //
 //  Created by Benjamin Erhart on 29.09.21.
 //
 
-#import "TORAuthKey.h"
+#import "AnonAuthKey.h"
 
-@implementation TORAuthKey
+@implementation AnonAuthKey
 
 - (instancetype)initFromUrl:(NSURL *)url
 {
@@ -27,23 +27,23 @@
 
         NSMutableArray *parts = [raw componentsSeparatedByString:@":"].mutableCopy;
 
-        NSString *piece = [TORAuthKey getNextPieceOf:parts];
+        NSString *piece = [AnonAuthKey getNextPieceOf:parts];
         if (!piece) return nil;
 
         if (self.isPrivate) {
             _onionAddress = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://%@.onion", piece]];
 
-            piece = [TORAuthKey getNextPieceOf:parts];
+            piece = [AnonAuthKey getNextPieceOf:parts];
             if (!piece) return nil;
         }
 
         _authType = piece;
 
-        piece = [TORAuthKey getNextPieceOf:parts];
+        piece = [AnonAuthKey getNextPieceOf:parts];
         if (!piece) return nil;
         _keyType = piece;
 
-        piece = [TORAuthKey getNextPieceOf:parts];
+        piece = [AnonAuthKey getNextPieceOf:parts];
         if (!piece) return nil;
         _key = piece;
     }
@@ -149,7 +149,7 @@
 
 // MARK: Equality
 
-- (BOOL)isEqualToAuthKey:(TORAuthKey *)authKey
+- (BOOL)isEqualToAuthKey:(AnonAuthKey *)authKey
 {
     NSString *url2 = authKey.file.absoluteString;
 
@@ -168,7 +168,7 @@
         return YES;
     }
 
-    if (![object isKindOfClass:[TORAuthKey class]])
+    if (![object isKindOfClass:[AnonAuthKey class]])
     {
         return NO;
     }

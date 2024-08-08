@@ -36,7 +36,7 @@ cd "${PODS_TARGET_SRCROOT}/AnyoneKit/%1$s"
   m.subspec 'Anyone' do |s|
     s.dependency 'AnyoneKit/Core'
 
-    s.source_files = 'AnyoneKit/Classes/CTor/**/*'
+    s.source_files = 'AnyoneKit/Classes/Anon/**/*'
 
     s.pod_target_xcconfig = {
       'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/AnyoneKit/anon" "${PODS_TARGET_SRCROOT}/AnyoneKit/anon/src" "${PODS_TARGET_SRCROOT}/AnyoneKit/openssl/include" "${BUILT_PRODUCTS_DIR}/openssl" "${PODS_TARGET_SRCROOT}/AnyoneKit/libevent/include"',
@@ -84,7 +84,7 @@ cd "${PODS_TARGET_SRCROOT}/AnyoneKit/%1$s"
   m.subspec 'Anyone-NoLZMA' do |s|
     s.dependency 'AnyoneKit/Core'
 
-    s.source_files = 'AnyoneKit/Classes/CTor/**/*'
+    s.source_files = 'AnyoneKit/Classes/Anon/**/*'
 
     s.pod_target_xcconfig = {
       'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/AnyoneKit/anon" "${PODS_TARGET_SRCROOT}/AnyoneKit/anon/src" "${PODS_TARGET_SRCROOT}/AnyoneKit/openssl/include" "${BUILT_PRODUCTS_DIR}/openssl" "${PODS_TARGET_SRCROOT}/AnyoneKit/libevent/include"',
