@@ -109,7 +109,7 @@ Here is an example of integrating Anyone with `NSURLSession`:
 
 ```objc
 AnyoneConfiguration *configuration = [AnyoneConfiguration new];
-configuration.ignoreMissingTorrc = YES;
+configuration.ignoreMissingAnonrc = YES;
 configuration.cookieAuthentication = YES;
 configuration.dataDirectory = [NSURL fileURLWithPath:NSTemporaryDirectory()];
 configuration.controlSocket = [configuration.dataDirectory URLByAppendingPathComponent:@"control_port"];

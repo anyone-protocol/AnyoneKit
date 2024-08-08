@@ -36,7 +36,7 @@
     configuration.dataDirectory = [NSURL fileURLWithPath:NSTemporaryDirectory()];
     configuration.controlSocket = [[NSURL fileURLWithPath:homeDirectory] URLByAppendingPathComponent:@".Trash/control_port"];
     configuration.arguments = @[
-        @"--ignore-missing-torrc",
+        @"--ignore-missing-anonrc",
         @"--GeoIPFile", [NSBundle.mainBundle pathForResource:@"geoip" ofType:nil],
         @"--GeoIPv6File", [NSBundle.mainBundle pathForResource:@"geoip6" ofType:nil],
     ];
