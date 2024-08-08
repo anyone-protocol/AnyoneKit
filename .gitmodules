@@ -7,6 +7,6 @@
 [submodule "AnyoneKit/libevent"]
 	path = AnyoneKit/libevent
 	url = https://github.com/libevent/libevent.git
-[submodule "AnyoneKit/tor"]
-	path = AnyoneKit/tor
-	url = https://gitlab.torproject.org/tpo/core/tor.git
+[submodule "AnyoneKit/anon"]
+	path = AnyoneKit/anon
+	url = https://github.com/ATOR-Development/ator-protocol.git

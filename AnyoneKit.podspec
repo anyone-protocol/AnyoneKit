@@ -3,7 +3,7 @@ Pod::Spec.new do |m|
   m.name             = 'AnyoneKit'
   m.version          = '408.12.1'
   m.summary          = 'AnyoneKit is the easiest way to embed the Anyone network in your iOS and macOS application.'
-  m.description      = 'AnyoneKit is the easiest way to embed the Anyone network in your iOS and macOS application. Currently, the framework compiles in static versions of tor, libevent, openssl, and liblzma.'
+  m.description      = 'AnyoneKit is the easiest way to embed the Anyone network in your iOS and macOS application. Currently, the framework compiles in static versions of anon, libevent, openssl, and liblzma.'
 
   m.homepage         = 'https://github.com/ATOR-Development/AnyoneKit'
   m.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -29,7 +29,7 @@ cd "${PODS_TARGET_SRCROOT}/AnyoneKit/%1$s"
     s.source_files = 'AnyoneKit/Classes/Core/**/*'
 
     s.resource_bundles = {
-      'GeoIP' => ['AnyoneKit/tor/src/config/geoip', 'AnyoneKit/tor/src/config/geoip6']
+      'GeoIP' => ['AnyoneKit/anon/src/config/geoip', 'AnyoneKit/anon/src/config/geoip6']
     }
   end
 
@@ -39,8 +39,8 @@ cd "${PODS_TARGET_SRCROOT}/AnyoneKit/%1$s"
     s.source_files = 'AnyoneKit/Classes/CTor/**/*'
 
     s.pod_target_xcconfig = {
-      'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/AnyoneKit/tor" "${PODS_TARGET_SRCROOT}/AnyoneKit/tor/src" "${PODS_TARGET_SRCROOT}/AnyoneKit/openssl/include" "${BUILT_PRODUCTS_DIR}/openssl" "${PODS_TARGET_SRCROOT}/AnyoneKit/libevent/include"',
-      'OTHER_LDFLAGS' => '$(inherited) -L"${BUILT_PRODUCTS_DIR}/AnyoneKit" -l"z" -l"lzma" -l"crypto" -l"ssl" -l"event_core" -l"event_extra" -l"event_pthreads" -l"event" -l"tor"',
+      'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/AnyoneKit/anon" "${PODS_TARGET_SRCROOT}/AnyoneKit/anon/src" "${PODS_TARGET_SRCROOT}/AnyoneKit/openssl/include" "${BUILT_PRODUCTS_DIR}/openssl" "${PODS_TARGET_SRCROOT}/AnyoneKit/libevent/include"',
+      'OTHER_LDFLAGS' => '$(inherited) -L"${BUILT_PRODUCTS_DIR}/AnyoneKit" -l"z" -l"lzma" -l"crypto" -l"ssl" -l"event_core" -l"event_extra" -l"event_pthreads" -l"event" -l"anon"',
     }
 
     s.ios.pod_target_xcconfig = {
@@ -71,14 +71,14 @@ cd "${PODS_TARGET_SRCROOT}/AnyoneKit/%1$s"
       :script => sprintf(script, "libevent")
     },
     {
-      :name => 'Build Tor',
+      :name => 'Build Anon',
       :execution_position => :before_compile,
-      :output_files => ['tor-always-execute-this-but-supress-warning'],
-      :script => sprintf(script, "tor")
+      :output_files => ['anon-always-execute-this-but-supress-warning'],
+      :script => sprintf(script, "anon")
     },
     ]
 
-    s.preserve_paths = 'AnyoneKit/include', 'AnyoneKit/libevent', 'AnyoneKit/libevent.sh', 'AnyoneKit/openssl', 'AnyoneKit/openssl.sh', 'AnyoneKit/tor', 'AnyoneKit/tor.sh', 'AnyoneKit/xz', 'AnyoneKit/xz.sh'
+    s.preserve_paths = 'AnyoneKit/include', 'AnyoneKit/libevent', 'AnyoneKit/libevent.sh', 'AnyoneKit/openssl', 'AnyoneKit/openssl.sh', 'AnyoneKit/anon', 'AnyoneKit/anon.sh', 'AnyoneKit/xz', 'AnyoneKit/xz.sh'
   end
 
   m.subspec 'Anyone-NoLZMA' do |s|
@@ -87,8 +87,8 @@ cd "${PODS_TARGET_SRCROOT}/AnyoneKit/%1$s"
     s.source_files = 'AnyoneKit/Classes/CTor/**/*'
 
     s.pod_target_xcconfig = {
-      'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/AnyoneKit/tor" "${PODS_TARGET_SRCROOT}/AnyoneKit/tor/src" "${PODS_TARGET_SRCROOT}/AnyoneKit/openssl/include" "${BUILT_PRODUCTS_DIR}/openssl" "${PODS_TARGET_SRCROOT}/AnyoneKit/libevent/include"',
-      'OTHER_LDFLAGS' => '$(inherited) -L"${BUILT_PRODUCTS_DIR}/AnyoneKit" -l"z" -l"crypto" -l"ssl" -l"event_core" -l"event_extra" -l"event_pthreads" -l"event" -l"tor"',
+      'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/AnyoneKit/anon" "${PODS_TARGET_SRCROOT}/AnyoneKit/anon/src" "${PODS_TARGET_SRCROOT}/AnyoneKit/openssl/include" "${BUILT_PRODUCTS_DIR}/openssl" "${PODS_TARGET_SRCROOT}/AnyoneKit/libevent/include"',
+      'OTHER_LDFLAGS' => '$(inherited) -L"${BUILT_PRODUCTS_DIR}/AnyoneKit" -l"z" -l"crypto" -l"ssl" -l"event_core" -l"event_extra" -l"event_pthreads" -l"event" -l"anon"',
     }
 
     s.ios.pod_target_xcconfig = {
@@ -113,17 +113,17 @@ cd "${PODS_TARGET_SRCROOT}/AnyoneKit/%1$s"
       :script => sprintf(script, "libevent")
     },
     {
-      :name => 'Build Tor',
+      :name => 'Build Anon',
       :execution_position => :before_compile,
-      :output_files => ['tor-always-execute-this-but-supress-warning'],
+      :output_files => ['anon-always-execute-this-but-supress-warning'],
       :script => <<-ENDSCRIPT
-cd "${PODS_TARGET_SRCROOT}/AnyoneKit/tor"
-../tor.sh --no-lzma
+cd "${PODS_TARGET_SRCROOT}/AnyoneKit/anon"
+../anon.sh --no-lzma
   ENDSCRIPT
     },
     ]
 
-    s.preserve_paths = 'AnyoneKit/include', 'AnyoneKit/libevent', 'AnyoneKit/libevent.sh', 'AnyoneKit/openssl', 'AnyoneKit/openssl.sh', 'AnyoneKit/tor', 'AnyoneKit/tor.sh'
+    s.preserve_paths = 'AnyoneKit/include', 'AnyoneKit/libevent', 'AnyoneKit/libevent.sh', 'AnyoneKit/openssl', 'AnyoneKit/openssl.sh', 'AnyoneKit/anon', 'AnyoneKit/anon.sh'
   end
 
   m.default_subspecs = 'Anyone'

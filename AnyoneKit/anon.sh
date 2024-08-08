@@ -8,7 +8,7 @@ fi
 
 ARCHS=($ARCHS)
 
-# We need gettext to build Tor.
+# We need gettext to build Anon.
 # This extends the path to look in some common locations (for example, if installed via Homebrew).
 PATH=$PATH:/usr/local/bin:/usr/local/opt/gettext/bin:/usr/local/opt/automake/bin:/usr/local/opt/aclocal/bin:/opt/homebrew/bin
 
@@ -30,7 +30,7 @@ if [[ "${CONFIGURATION_TEMP_DIR}" =~ \  ]]; then
 fi
 
 # Disable PT_DENY_ATTACH because it is private API.
-PSEUDO_SYS_INCLUDE_DIR="${CONFIGURATION_TEMP_DIR}/tor-sys"
+PSEUDO_SYS_INCLUDE_DIR="${CONFIGURATION_TEMP_DIR}/anon-sys"
 mkdir -p "${PSEUDO_SYS_INCLUDE_DIR}/sys"
 touch "${PSEUDO_SYS_INCLUDE_DIR}/sys/ptrace.h"
 
@@ -61,17 +61,17 @@ function configure {
     # off with `-DOPENSSL_NO_ENGINE`. Remove that, when the underlying problem
     # is fixed!
 
-    ./configure --enable-silent-rules --enable-pic --disable-module-relay --disable-module-dirauth --disable-tool-name-check --disable-unittests --enable-static-openssl --enable-static-libevent --disable-asciidoc --disable-system-torrc --disable-linker-hardening --disable-dependency-tracking --disable-manpage --disable-html-manual --disable-gcc-warnings-advisory --prefix="${CONFIGURATION_TEMP_DIR}/tor-${ARCH}" --with-libevent-dir="${BUILT_PRODUCTS_DIR}" --with-openssl-dir="${BUILT_PRODUCTS_DIR}" --enable-lzma=${LZMA} --enable-zstd=no CC="$(xcrun -f --sdk ${PLATFORM_NAME} clang) -arch ${ARCH} -isysroot ${SDKROOT}" CPP="$(xcrun -f --sdk ${PLATFORM_NAME} clang) -E -arch ${ARCH} -isysroot ${SDKROOT}" CPPFLAGS="${DEBUG_CFLAGS} ${BITCODE_CFLAGS} -I${PODS_TARGET_SRCROOT}/AnyoneKit/tor/src/core -I${PODS_TARGET_SRCROOT}/AnyoneKit/include -I${PODS_TARGET_SRCROOT}/AnyoneKit/openssl/include -I${BUILT_PRODUCTS_DIR}/openssl-${ARCH} -I${PODS_TARGET_SRCROOT}/AnyoneKit/libevent/include -I${BUILT_PRODUCTS_DIR}/libevent-${ARCH} -I${BUILT_PRODUCTS_DIR}/liblzma-${ARCH} -I${PSEUDO_SYS_INCLUDE_DIR} -isysroot ${SDKROOT} -DOPENSSL_NO_ENGINE" cross_compiling="yes" ac_cv_func__NSGetEnviron="no" ac_cv_func_clock_gettime="no" ac_cv_func_getentropy="no" LDFLAGS="-lz ${BITCODE_CFLAGS}"
+    ./configure --enable-silent-rules --enable-pic --disable-module-relay --disable-module-dirauth --disable-tool-name-check --disable-unittests --enable-static-openssl --enable-static-libevent --disable-asciidoc --disable-system-torrc --disable-linker-hardening --disable-dependency-tracking --disable-manpage --disable-html-manual --disable-gcc-warnings-advisory --prefix="${CONFIGURATION_TEMP_DIR}/anon-${ARCH}" --with-libevent-dir="${BUILT_PRODUCTS_DIR}" --with-openssl-dir="${BUILT_PRODUCTS_DIR}" --enable-lzma=${LZMA} --enable-zstd=no CC="$(xcrun -f --sdk ${PLATFORM_NAME} clang) -arch ${ARCH} -isysroot ${SDKROOT}" CPP="$(xcrun -f --sdk ${PLATFORM_NAME} clang) -E -arch ${ARCH} -isysroot ${SDKROOT}" CPPFLAGS="${DEBUG_CFLAGS} ${BITCODE_CFLAGS} -I${PODS_TARGET_SRCROOT}/AnyoneKit/anon/src/core -I${PODS_TARGET_SRCROOT}/AnyoneKit/include -I${PODS_TARGET_SRCROOT}/AnyoneKit/openssl/include -I${BUILT_PRODUCTS_DIR}/openssl-${ARCH} -I${PODS_TARGET_SRCROOT}/AnyoneKit/libevent/include -I${BUILT_PRODUCTS_DIR}/libevent-${ARCH} -I${BUILT_PRODUCTS_DIR}/liblzma-${ARCH} -I${PSEUDO_SYS_INCLUDE_DIR} -isysroot ${SDKROOT} -DOPENSSL_NO_ENGINE" cross_compiling="yes" ac_cv_func__NSGetEnviron="no" ac_cv_func_clock_gettime="no" ac_cv_func_getentropy="no" LDFLAGS="-lz ${BITCODE_CFLAGS}"
 
     LAST_CONFIGURED_ARCH=$ARCH
 }
 
 REBUILD=0
-LIB=libtor.a
+LIB=libanon.a
 
 # Generate the configure script (necessary for version control distributions)
 if [[ ! -f ./configure ]]; then
-    # FIXME: This fixes `AnyoneKit/tor/autogen.sh`. Check if that was changed and remove this patch.
+    # FIXME: This fixes `AnyoneKit/anon/autogen.sh`. Check if that was changed and remove this patch.
     sed -i'.backup' -e 's/all,error/no-obsolete,error/' autogen.sh
 
     ./autogen.sh

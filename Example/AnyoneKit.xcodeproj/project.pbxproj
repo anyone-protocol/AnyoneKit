@@ -64,6 +64,7 @@
 		80D47871C3901193EE623A3E /* Pods-Tor_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor_Tests.debug.xcconfig"; path = "Target Support Files/Pods-Tor_Tests/Pods-Tor_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8AA26438ED97EA21E1B6572D /* Pods-Tor-Example-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor-Example-Mac.release.xcconfig"; path = "Target Support Files/Pods-Tor-Example-Mac/Pods-Tor-Example-Mac.release.xcconfig"; sourceTree = "<group>"; };
 		90700F7B59D5C0641E3250C1 /* Pods-Tor_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor_Example.debug.xcconfig"; path = "Target Support Files/Pods-Tor_Example/Pods-Tor_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		A02CB34E2C650244004A5E22 /* anon.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = anon.sh; path = ../AnyoneKit/anon.sh; sourceTree = "<group>"; };
 		A07DA5B42791AED000D62827 /* .gitmodules */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitmodules; path = ../.gitmodules; sourceTree = "<group>"; };
 		A0CADB432C63B65B0037A37C /* AnyoneKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = AnyoneKit.podspec; path = ../AnyoneKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A0CADB462C63B7570037A37C /* AnyoneKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AnyoneKit-Info.plist"; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		A0CADB582C63B9060037A37C /* xz.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = xz.sh; path = ../AnyoneKit/xz.sh; sourceTree = "<group>"; };
 		A0CADB592C63B91E0037A37C /* openssl.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = openssl.sh; path = ../AnyoneKit/openssl.sh; sourceTree = "<group>"; };
 		A0CADB5A2C63B9310037A37C /* libevent.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = libevent.sh; path = ../AnyoneKit/libevent.sh; sourceTree = "<group>"; };
-		A0CADB5B2C63B9400037A37C /* tor.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = tor.sh; path = ../AnyoneKit/tor.sh; sourceTree = "<group>"; };
 		A0CADB5C2C63B9510037A37C /* mmap-cache.patch */ = {isa = PBXFileReference; lastKnownFileType = text; name = "mmap-cache.patch"; path = "../AnyoneKit/mmap-cache.patch"; sourceTree = "<group>"; };
 		A0F008F727906CA30073D36D /* Podfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
 		A0F008F827906CA30073D36D /* Podfile */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -195,7 +195,7 @@
 				A0CADB582C63B9060037A37C /* xz.sh */,
 				A0CADB592C63B91E0037A37C /* openssl.sh */,
 				A0CADB5A2C63B9310037A37C /* libevent.sh */,
-				A0CADB5B2C63B9400037A37C /* tor.sh */,
+				A02CB34E2C650244004A5E22 /* anon.sh */,
 				A0CADB5C2C63B9510037A37C /* mmap-cache.patch */,
 			);
 			name = "Podspec Metadata";
@@ -760,7 +760,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.Tor-Example-Mac";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.AnyoneKit-Example-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -799,7 +799,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.Tor-Example-Mac";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.AnyoneKit-Example-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
