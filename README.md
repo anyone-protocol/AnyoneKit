@@ -44,7 +44,7 @@ If you use dynamic frameworks, use the root spec:
 
 ```ruby
 use_frameworks!
-pod 'AnyoneKit', '~> 408'
+pod 'AnyoneKit', '~> 409'
 ```
 
 If you check out this repository directly, you will also need to fetch the submodules:
