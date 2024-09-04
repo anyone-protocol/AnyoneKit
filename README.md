@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/AnyoneKit.svg?style=flat)](https://cocoapods.org/pods/AnyoneKit)
 [![Platform](https://img.shields.io/cocoapods/p/AnyoneKit.svg?style=flat)](https://cocoapods.org/pods/AnyoneKit)
 
-AnyoneKit is the easiest way to embed the Anyone network in your iOS application.
+AnyoneKit is the easiest way to embed the Anyone/anon network in your iOS application.
 
 Currently, the framework compiles in the following versions of `anon`, `libevent`, `openssl`, and `liblzma`:
 
@@ -14,7 +14,6 @@ Currently, the framework compiles in the following versions of `anon`, `libevent
 | libevent  | 2.1.12   |
 | OpenSSL   | 3.3.1    |
 | liblzma   | 5.6.2    |
-| Onionmasq | 0.6.2    |
 
 
 ## Example
@@ -39,8 +38,6 @@ brew install automake autoconf libtool gettext
 
 AnyoneKit is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
-
-If you use dynamic frameworks, use the root spec:
 
 ```ruby
 use_frameworks!
@@ -103,22 +100,22 @@ Check build output in the Report Navigator. (Last tab in the left pane.)
 
 ## Usage
 
-Starting an instance of the Anyone client involves using three classes: `AnyoneThread`, `AnyoneConfiguration` and `AnyoneController`.
+Starting an instance of the anon client involves using three classes: `AnonThread`, `AnonConfiguration` and `AnonController`.
 
-Here is an example of integrating Anyone with `NSURLSession`:
+Here is an example of integrating anon with `NSURLSession`:
 
 ```objc
-AnyoneConfiguration *configuration = [AnyoneConfiguration new];
+AnonConfiguration *configuration = [AnonConfiguration new];
 configuration.ignoreMissingAnonrc = YES;
 configuration.cookieAuthentication = YES;
 configuration.dataDirectory = [NSURL fileURLWithPath:NSTemporaryDirectory()];
 configuration.controlSocket = [configuration.dataDirectory URLByAppendingPathComponent:@"control_port"];
 
-AnyoneThread *thread = [[AnyoneThread alloc] initWithConfiguration:configuration];
+AnonThread *thread = [[AnonThread alloc] initWithConfiguration:configuration];
 [thread start];
 
 NSData *cookie = configuration.cookie;
-AnyoneController *controller = [[AnyoneController alloc] initWithSocketURL:configuration.controlSocket];
+AnonController *controller = [[AnonController alloc] initWithSocketURL:configuration.controlSocket];
 
 NSError *error;
 [controller connect:&error];
@@ -144,13 +141,16 @@ if (error) {
 }];
 ```
 
+You might also want to have a look at the example iOS and macOS apps contained in the repository:
+https://github.com/anyone-protocol/AnyoneKit/tree/pure_pod/Example 
+
 
 ### GeoIP
 
 If you want to use the provided GeoIP files, add this to your configuration:
 
 ```objc
-AnyoneConfiguration *configuration = [AnyoneConfiguration new];
+AnonConfiguration *configuration = [AnonConfiguration new];
 configuration.geoipFile = NSBundle.geoIpBundle.geoipFile;
 configuration.geoip6File = NSBundle.geoIpBundle.geoip6File;
 ```
