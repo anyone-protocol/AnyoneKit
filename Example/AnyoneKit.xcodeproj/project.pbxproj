@@ -63,9 +63,9 @@
 		80D47871C3901193EE623A3E /* Pods-Tor_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor_Tests.debug.xcconfig"; path = "Target Support Files/Pods-Tor_Tests/Pods-Tor_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8AA26438ED97EA21E1B6572D /* Pods-Tor-Example-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor-Example-Mac.release.xcconfig"; path = "Target Support Files/Pods-Tor-Example-Mac/Pods-Tor-Example-Mac.release.xcconfig"; sourceTree = "<group>"; };
 		90700F7B59D5C0641E3250C1 /* Pods-Tor_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor_Example.debug.xcconfig"; path = "Target Support Files/Pods-Tor_Example/Pods-Tor_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		A02CB34E2C650244004A5E22 /* anon.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = anon.sh; path = ../AnyoneKit/anon.sh; sourceTree = "<group>"; };
-		A07DA5B42791AED000D62827 /* .gitmodules */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitmodules; path = ../.gitmodules; sourceTree = "<group>"; };
-		A0CADB432C63B65B0037A37C /* AnyoneKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = AnyoneKit.podspec; path = ../AnyoneKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A00A91782CF4A9C90070EB76 /* build-xcframework.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "build-xcframework.sh"; path = "../build-xcframework.sh"; sourceTree = SOURCE_ROOT; };
+		A044E1802CF5FCCF007BC65C /* download.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = download.sh; path = ../AnyoneKit/download.sh; sourceTree = SOURCE_ROOT; };
+		A0CADB432C63B65B0037A37C /* AnyoneKit.podspec */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; name = AnyoneKit.podspec; path = ../AnyoneKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A0CADB462C63B7570037A37C /* AnyoneKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AnyoneKit-Info.plist"; sourceTree = "<group>"; };
 		A0CADB472C63B7570037A37C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A0CADB482C63B7570037A37C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -73,9 +73,6 @@
 		A0CADB4A2C63B7570037A37C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A0CADB4B2C63B7570037A37C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A0CADB562C63B7870037A37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A0CADB582C63B9060037A37C /* xz.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = xz.sh; path = ../AnyoneKit/xz.sh; sourceTree = "<group>"; };
-		A0CADB592C63B91E0037A37C /* openssl.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = openssl.sh; path = ../AnyoneKit/openssl.sh; sourceTree = "<group>"; };
-		A0CADB5A2C63B9310037A37C /* libevent.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = libevent.sh; path = ../AnyoneKit/libevent.sh; sourceTree = "<group>"; };
 		A0CADB5C2C63B9510037A37C /* mmap-cache.patch */ = {isa = PBXFileReference; lastKnownFileType = text; name = "mmap-cache.patch"; path = "../AnyoneKit/mmap-cache.patch"; sourceTree = "<group>"; };
 		A0F008F727906CA30073D36D /* Podfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
 		A0F008F827906CA30073D36D /* Podfile */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -190,11 +187,8 @@
 				A0F008F827906CA30073D36D /* Podfile */,
 				A0F008F727906CA30073D36D /* Podfile.lock */,
 				A0F008FE27906F620073D36D /* .gitignore */,
-				A07DA5B42791AED000D62827 /* .gitmodules */,
-				A0CADB582C63B9060037A37C /* xz.sh */,
-				A0CADB592C63B91E0037A37C /* openssl.sh */,
-				A0CADB5A2C63B9310037A37C /* libevent.sh */,
-				A02CB34E2C650244004A5E22 /* anon.sh */,
+				A00A91782CF4A9C90070EB76 /* build-xcframework.sh */,
+				A044E1802CF5FCCF007BC65C /* download.sh */,
 				A0CADB5C2C63B9510037A37C /* mmap-cache.patch */,
 			);
 			name = "Podspec Metadata";
@@ -385,13 +379,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AnyoneKit-Example/Pods-AnyoneKit-Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AnyoneKit-iOS/AnyoneKit.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnyoneKit-Example/Pods-AnyoneKit-Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnyoneKit.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnyoneKit-Example/Pods-AnyoneKit-Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -469,13 +462,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AnyoneKit-Example-Mac/Pods-AnyoneKit-Example-Mac-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AnyoneKit-macOS/AnyoneKit.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnyoneKit-Example-Mac/Pods-AnyoneKit-Example-Mac-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnyoneKit.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnyoneKit-Example-Mac/Pods-AnyoneKit-Example-Mac-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -654,6 +646,9 @@
 			baseConfigurationReference = 1024D01157BEB1EA55952BD3 /* Pods-AnyoneKit-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = W36S8KLY7S;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "Example-iOS/AnyoneKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -670,6 +665,9 @@
 			baseConfigurationReference = 7D3F3AA9B00EA31999373254 /* Pods-AnyoneKit-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = W36S8KLY7S;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "Example-iOS/AnyoneKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

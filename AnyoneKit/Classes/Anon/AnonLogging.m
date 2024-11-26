@@ -7,11 +7,12 @@
 
 #import "AnonLogging.h"
 
-#import <event2/event.h>
+#import <anon/event2/event.h>
+#import <anon/event2/visibility.h>
 #import <asl.h>
 // XXXX This is not an exposed or supported Anon API.
 // XXXX If Anon changes this header, then this code might break.
-#import <lib/log/log.h>
+#import "anon/lib/log/log.h"
 
 anon_log_cb anon_log_callback;
 anon_log_cb event_log_callback;

@@ -1,9 +1,5 @@
 PODS:
-  - AnyoneKit (409.7.2):
-    - AnyoneKit/Anyone (= 409.7.2)
-  - AnyoneKit/Anyone (409.7.2):
-    - AnyoneKit/Core
-  - AnyoneKit/Core (409.7.2)
+  - AnyoneKit (409.8.1)
 
 DEPENDENCIES:
   - AnyoneKit (from `../`)
@@ -13,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AnyoneKit: 269d9aff192be42d1ddbce07494b3d0264fc96a0
+  AnyoneKit: 195e8c2926ef6e2b1adc1560fa91d19681171bee
 
 PODFILE CHECKSUM: 9ad077cfbd03b4e8f4449e5c65c9641448dca7d5
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

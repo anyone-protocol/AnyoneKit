@@ -6,9 +6,10 @@
 //
 
 #import "AnonX25519KeyPair.h"
-#import <lib/malloc/malloc.h>
-#import <lib/crypt_ops/crypto_curve25519.h>
-#import <lib/encoding/binascii.h>
+#import <anon/lib/malloc/malloc.h>
+#import <anon/lib/cc/compat_compiler.h>
+#import <anon/lib/crypt_ops/crypto_curve25519.h>
+#import <anon/lib/encoding/binascii.h>
 
 
 @implementation AnonX25519KeyPair
