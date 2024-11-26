@@ -5,12 +5,12 @@ Pod::Spec.new do |m|
   m.summary          = 'AnyoneKit is the easiest way to embed the Anyone network in your iOS and macOS application.'
   m.description      = 'AnyoneKit is the easiest way to embed the Anyone network in your iOS and macOS application. Currently, the framework compiles in static versions of anon, libevent, openssl, and liblzma.'
 
-  m.homepage         = 'https://github.com/ATOR-Development/AnyoneKit'
+  m.homepage         = 'https://github.com/anyone-protocol/AnyoneKit'
   m.license          = { :type => 'MIT', :file => 'LICENSE' }
   m.authors          = { 'Benjamin Erhart' => 'berhart@netzarchitekten.com', }
   m.source           = {
-    :git => 'https://github.com/ATOR-Development/AnyoneKit.git',
-    :branch => 'pure_pod',
+    :git => 'https://github.com/anyone-protocol/AnyoneKit.git',
+    :branch => 'main',
     :tag => "v#{m.version}" }
   m.social_media_url = 'https://chaos.social/@tla'
 
