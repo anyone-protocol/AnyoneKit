@@ -1,5 +1,7 @@
 #!/bin/sh
 
+VERSION=$1
+
 cd AnyoneKit/Assets
 
 # Test if file is older then 1 week.
@@ -17,7 +19,7 @@ cd ../..
 OLD="$(find anon.xcframework -mmin +10080 2>/dev/null)"
 
 if [ ! -d anon.xcframework -o ! -z "$OLD" ]; then
-    wget https://github.com/anyone-protocol/AnyoneKit/releases/download/v409.7.2/anon.xcframework.zip
+    wget "https://github.com/anyone-protocol/AnyoneKit/releases/download/$VERSION/anon.xcframework.zip"
     unzip anon.xcframework.zip
     rm anon.xcframework.zip
 fi

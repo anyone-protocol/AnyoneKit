@@ -34,6 +34,6 @@ Pod::Spec.new do |m|
 
   m.preserve_paths = 'build-xcframework.sh', 'anon.xcframework', 'AnyoneKit/download.sh'
 
-  m.prepare_command = 'AnyoneKit/download.sh'
+  m.prepare_command = "AnyoneKit/download.sh v#{m.version}"
 
 end

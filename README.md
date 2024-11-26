@@ -57,14 +57,16 @@ brew install automake autoconf libtool gettext
 
 - Update info and version numbers in `README.md` and `AnyoneKit.podspec`!
 
+- Commit, tag and push new release.
+
 - Zip `anon.framework`:
 
 ```sh
 zip -r anon.xcframework.zip anon.xcframework
 ```
 
-- Create a preliminary release on https://github.com/anyone-protocol/AnyoneKit/releases and zip and upload
-  the created anon.xcframework.
+- Create a pre-release on https://github.com/anyone-protocol/AnyoneKit/releases with the latest 
+  info as per older releases and zip and upload the created anon.xcframework.
 
 - Then lint like this:
 
@@ -78,8 +80,8 @@ pod lib lint --allow-warnings
 pod trunk push --allow-warnings --skip-import-validation --skip-tests
 ```
 
-- Then update the [release](https://github.com/anyone-protocol/AnyoneKit/releases) in GitHub, make it link
-  to the tag, and attach the latest info as per older releases.
+- Then update the [release](https://github.com/anyone-protocol/AnyoneKit/releases) in GitHub, 
+  setting it as the latest release.
 
 
 ## Usage
