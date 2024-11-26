@@ -1,7 +1,9 @@
 use_frameworks!
 
 def anyone
-  pod 'AnyoneKit', :path => '../'
+  pod 'AnyoneKit',
+#    :git => 'https://github.com/anyone-protocol/AnyoneKit.git'
+    :path => '../'
 end
 
 
