@@ -9,7 +9,24 @@ ATOR_VERSION="main"
 
 cd "$(dirname "$0")"
 ROOT="$(pwd -P)"
-BUILDDIR="$(mktemp -d)"
+
+DEBUG=""
+LZMA="yes"
+
+while getopts dl flag
+do
+    case "$flag" in
+        d) DEBUG="1";;
+        l) LZMA="no";;
+    esac
+done
+
+if [ -z $DEBUG ]; then
+    BUILDDIR="$(mktemp -d)"
+else
+    BUILDDIR="$ROOT/build"
+    mkdir -p "$BUILDDIR"
+fi
 
 echo "Build dir: $BUILDDIR"
 
@@ -17,6 +34,10 @@ build_liblzma() {
     SDK=$1
     ARCH=$2
     MIN=$3
+
+    if [ "$LZMA" != "yes" ]; then
+        return
+    fi
 
     SOURCE="$BUILDDIR/xz"
     LOG="$BUILDDIR/liblzma-$SDK-$ARCH.log"
@@ -247,7 +268,7 @@ build_libanon() {
         --disable-manpage \
         --disable-html-manual \
         --disable-gcc-warnings-advisory \
-        --enable-lzma \
+        --enable-lzma="$LZMA" \
         --disable-zstd \
         --with-libevent-dir="$BUILDDIR/$SDK/libevent-$ARCH" \
         --with-openssl-dir="$BUILDDIR/$SDK/libssl-$ARCH" \
@@ -286,6 +307,10 @@ fatten() {
     SDK=$2
     LIB=${3:-$NAME}
 
+    if [ "$LZMA" != "yes" -a "$NAME" == "liblzma" ]; then
+        return
+    fi
+
     echo "- Fatten $LIB in $NAME ($SDK)"
 
     mkdir -p "$BUILDDIR/$SDK/$NAME/lib"
@@ -305,28 +330,33 @@ create_framework() {
     if [[ -z "$IS_FAT" ]]; then
         echo "- Create framework for $SDK"
 
-        libtool -static -o "$BUILDDIR/$SDK/anon.framework/anon" \
-            "$BUILDDIR/$SDK/liblzma-arm64/lib/liblzma.a" \
-            "$BUILDDIR/$SDK/libssl-arm64/lib/libssl.a" \
-            "$BUILDDIR/$SDK/libssl-arm64/lib/libcrypto.a" \
-            "$BUILDDIR/$SDK/libevent-arm64/lib/libevent.a" \
-            "$BUILDDIR/$SDK/libanon-arm64/lib/libanon.a"
+        POSTFIX="-arm64"
     else
         echo "- Create framework for fat $SDK"
 
-        libtool -static -o "$BUILDDIR/$SDK/anon.framework/anon" \
-            "$BUILDDIR/$SDK/liblzma/lib/liblzma.a" \
-            "$BUILDDIR/$SDK/libssl/lib/libssl.a" \
-            "$BUILDDIR/$SDK/libssl/lib/libcrypto.a" \
-            "$BUILDDIR/$SDK/libevent/lib/libevent.a" \
-            "$BUILDDIR/$SDK/libanon/lib/libanon.a"
+        POSTFIX=""
     fi
 
-    cp -r "$BUILDDIR/$SDK/liblzma-arm64/include"/* \
-        "$BUILDDIR/$SDK/libssl-arm64/include"/* \
+    LIBS=("$BUILDDIR/$SDK/libssl$POSTFIX/lib/libssl.a" \
+        "$BUILDDIR/$SDK/libssl$POSTFIX/lib/libcrypto.a" \
+        "$BUILDDIR/$SDK/libevent$POSTFIX/lib/libevent.a" \
+        "$BUILDDIR/$SDK/libanon$POSTFIX/lib/libanon.a")
+
+    if [ "$LZMA" == "yes" ]; then
+        LIBS=("$BUILDDIR/$SDK/liblzma$POSTFIX/lib/liblzma.a" "${LIBS[@]}")
+    fi
+
+    libtool -static -o "$BUILDDIR/$SDK/anon.framework/anon" "${LIBS[@]}"
+
+    HEADERS=("$BUILDDIR/$SDK/libssl-arm64/include"/* \
         "$BUILDDIR/$SDK/libevent-arm64/include"/* \
-        "$BUILDDIR/$SDK/libanon-arm64/include"/* \
-        "$BUILDDIR/$SDK/anon.framework/Headers"
+        "$BUILDDIR/$SDK/libanon-arm64/include"/*)
+
+    if [ "$LZMA" == "yes" ]; then
+        HEADERS=("$BUILDDIR/$SDK/liblzma-arm64/include"/* "${HEADERS[@]}")
+    fi
+
+    cp -r "${HEADERS[@]}" "$BUILDDIR/$SDK/anon.framework/Headers"
 }
 
 build_liblzma       iphoneos            arm64           12.0
@@ -375,4 +405,6 @@ xcodebuild -create-xcframework \
     -framework "$BUILDDIR/macosx/anon.framework" \
     -output "$ROOT/anon.xcframework"
 
-rm -rf "$BUILDDIR"
+if [ -z $DEBUG ]; then
+    rm -rf "$BUILDDIR"
+fi
