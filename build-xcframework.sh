@@ -5,7 +5,7 @@ PATH=$PATH:/usr/local/bin:/usr/local/opt/gettext/bin:/usr/local/opt/automake/bin
 XZ_VERSION="v5.6.3"
 OPENSSL_VERSION="openssl-3.4.0"
 LIBEVENT_VERSION="release-2.1.12-stable"
-ATOR_VERSION="main"
+ATOR_VERSION="v0.4.9.10"
 
 cd "$(dirname "$0")"
 ROOT="$(pwd -P)"

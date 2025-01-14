@@ -10,7 +10,7 @@ Currently, the framework contains the following versions of `anon`, `libevent`, 
 
 | Component | Version  |
 |:--------- | --------:|
-| anon      | 0.4.9.8  |
+| anon      | 0.4.9.10 |
 | libevent  | 2.1.12   |
 | OpenSSL   | 3.4.0    |
 | liblzma   | 5.6.3    |
