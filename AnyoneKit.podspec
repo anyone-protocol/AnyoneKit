@@ -1,7 +1,7 @@
 Pod::Spec.new do |m|
 
   m.name             = 'AnyoneKit'
-  m.version          = '409.10.1'
+  m.version          = '409.10.2'
   m.summary          = 'AnyoneKit is the easiest way to embed the Anyone network in your iOS and macOS application.'
   m.description      = 'AnyoneKit is the easiest way to embed the Anyone network in your iOS and macOS application. Currently, the framework compiles in static versions of anon, libevent, openssl, and liblzma.'
 
