@@ -9,8 +9,8 @@ OLD="$(find geoip -mmin +10080 2>/dev/null)"
 
 # Only download, if files are not existing or older than 1 week.
 if [ ! -f geoip -o ! -z "$OLD" ]; then
-    wget https://raw.githubusercontent.com/anyone-protocol/ator-protocol/refs/heads/main/src/config/geoip
-    wget https://raw.githubusercontent.com/anyone-protocol/ator-protocol/refs/heads/main/src/config/geoip6
+    wget --output-document=geoip https://raw.githubusercontent.com/anyone-protocol/ator-protocol/refs/heads/main/src/config/geoip
+    wget --output-document=geoip6 https://raw.githubusercontent.com/anyone-protocol/ator-protocol/refs/heads/main/src/config/geoip6
 fi
 
 cd ../..
