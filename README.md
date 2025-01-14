@@ -62,7 +62,7 @@ brew install automake autoconf libtool gettext
 - Zip `anon.framework`:
 
 ```sh
-zip -r anon.xcframework.zip anon.xcframework
+zip -r -9 anon.xcframework.zip anon.xcframework
 ```
 
 - Create a pre-release on https://github.com/anyone-protocol/AnyoneKit/releases with the latest 
@@ -74,10 +74,10 @@ zip -r anon.xcframework.zip anon.xcframework
 pod lib lint --allow-warnings
 ```
 
-- If the linting went well, create a git tag for the version, push to GitHub and then publish to CocoaPods:
+- If the linting went well, publish to CocoaPods:
 
 ```sh
-pod trunk push --allow-warnings --skip-import-validation --skip-tests
+pod trunk push --allow-warnings
 ```
 
 - Then update the [release](https://github.com/anyone-protocol/AnyoneKit/releases) in GitHub, 
