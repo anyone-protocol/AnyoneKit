@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- The representation of one private or public v3 onion service authentication key.
+ The representation of one private or public v3 anon service authentication key.
  */
 @interface AnonAuthKey : NSObject
 
@@ -25,9 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (atomic, readonly) BOOL isPrivate;
 
 /**
- The full  onion service URL.
+ The full  anon service URL.
  */
-@property (nonatomic, readonly, nullable) NSURL *onionAddress;
+@property (nonatomic, readonly, nullable) NSURL *anonAddress;
 
 /**
  The authentication type.
@@ -82,7 +82,7 @@ Currently only the \c descriptor type is supported. This class will set this val
  Normally, the domain will be used as file name, but this method will generate a UUID, if no domain can be found.
 
  @param key A \c BASE32 encoded \c x25519 private key.
- @param url A URL containing the v3 onion service domain for which this key is.
+ @param url A URL containing the v3 anon service domain for which this key is.
  */
 - (instancetype)initPrivate:(NSString * _Nonnull)key forDomain:(NSURL * _Nonnull)url;
 

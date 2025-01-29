@@ -1,5 +1,5 @@
 //
-//  AnonOnionAuth.h
+//  AnonAuth.h
 //  AnyoneKit
 //
 //  Created by Benjamin Erhart on 29.09.21.
@@ -11,9 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- Support for Onion v3 service authentication configuration files.
+ Support for Anon v3 service authentication configuration files.
  */
-@interface AnonOnionAuth : NSObject
+@interface AnonAuth : NSObject
 
 
 /**

@@ -1,13 +1,13 @@
 //
-//  AnonOnionAuth.m
+//  AnonAuth.m
 //  AnyoneKit
 //
 //  Created by Benjamin Erhart on 29.09.21.
 //
 
-#import "AnonOnionAuth.h"
+#import "AnonAuth.h"
 
-@implementation AnonOnionAuth
+@implementation AnonAuth
 
 - (instancetype)initWithPrivateDirUrl:(nullable NSURL *)privateUrl andPublicDirUrl:(nullable NSURL *)publicUrl
 {

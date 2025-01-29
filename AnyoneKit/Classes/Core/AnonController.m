@@ -625,7 +625,7 @@ static NSString * const AnonControllerEndReplyLineSeparator = @" ";
         NSString *host = components[0];
 
         // Replace 127.0.0.1 with localhost, as without this, there's a strange bug
-        // triggered: It won't resolve .onion addresses, but *only on real devices*.
+        // triggered: It won't resolve .anon addresses, but *only on real devices*.
         // So, on a real device, there's probably the wrong DNS resolver used, which
         // would mean, DNS queries were leaking, too.
         if ([host isEqualToString:@"127.0.0.1"])

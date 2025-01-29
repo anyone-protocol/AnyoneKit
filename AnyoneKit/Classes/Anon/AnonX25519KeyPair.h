@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Create a private \c AnonAuthKey from this key material using the provided domain.
 
- @param domain The domain name, this private key is for. Must include the \c .onion TLD!
+ @param domain The domain name, this private key is for. Must include the \c .anon TLD!
  @returns the private \c AnonAuthKey of this key pair's private key  or \c nil if the \c domain is empty or this class doesn't contain a private key.
 */
 - (nullable AnonAuthKey *)getPrivateAuthKeyForDomain:(nonnull NSString *)domain;
