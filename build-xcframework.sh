@@ -42,7 +42,7 @@ build_liblzma() {
     SOURCE="$BUILDDIR/xz"
     LOG="$BUILDDIR/liblzma-$SDK-$ARCH.log"
 
-    if [[ ! -d "$SOURCE" ]]; then
+    if [ ! -d "$SOURCE" ]; then
         echo "- Check out XZ project"
 
         cd "$BUILDDIR"
@@ -56,7 +56,7 @@ build_liblzma() {
     make distclean 2>/dev/null 1>/dev/null
 
     # Generate the configure script.
-    if [[ ! -f ./configure ]]; then
+    if [ ! -f ./configure ]; then
         LIBTOOLIZE=glibtoolize
         ./autogen.sh >> "$LOG" 2>&1
     fi
@@ -95,7 +95,7 @@ build_libssl() {
     SOURCE="$BUILDDIR/openssl"
     LOG="$BUILDDIR/libssl-$SDK-$ARCH.log"
 
-    if [[ ! -d "$SOURCE" ]]; then
+    if [ ! -d "$SOURCE" ]; then
         echo "- Check out OpenSSL project"
 
         cd "$BUILDDIR"
@@ -106,57 +106,57 @@ build_libssl() {
 
     cd "$SOURCE"
 
-    make distclean 2>/dev/null 1>/dev/null
+    make distclean >> "$LOG" 2>&1
 
-    if [[ "${SDK}" == "iphoneos" ]]; then
-        if [[ "${ARCH}" == "arm64" ]]; then
+    if [ "$SDK" = "iphoneos" ]; then
+        if [ "$ARCH" = "arm64" ]; then
             PLATFORM_FLAGS="no-async zlib-dynamic enable-ec_nistp_64_gcc_128"
             CONFIG="ios64-xcrun"
-        elif [[ "${ARCH}" == "armv7" ]]; then
+        elif [ "$ARCH" = "armv7" ]; then
             PLATFORM_FLAGS="no-async zlib-dynamic"
             CONFIG="ios-xcrun"
         else
-            echo "OpenSSL configuration error: ${ARCH} on ${PLATFORM_NAME} not supported!"
+            echo "OpenSSL configuration error: $ARCH on $SDK not supported!"
         fi
-    elif [[ "${SDK}" == "iphonesimulator" ]]; then
-        if [[ "${ARCH}" == "arm64" ]]; then
+    elif [ "$SDK" = "iphonesimulator" ]; then
+        if [ "$ARCH" = "arm64" ]; then
             PLATFORM_FLAGS="no-async zlib-dynamic enable-ec_nistp_64_gcc_128"
             CONFIG="iossimulator-xcrun"
-        elif [[ "${ARCH}" == "i386" ]]; then
+        elif [ "$ARCH" = "i386" ]; then
             PLATFORM_FLAGS="no-asm"
             CONFIG="iossimulator-xcrun"
-        elif [[ "${ARCH}" == "x86_64" ]]; then
+        elif [ "$ARCH" = "x86_64" ]; then
             PLATFORM_FLAGS="no-asm enable-ec_nistp_64_gcc_128"
             CONFIG="iossimulator-xcrun"
         else
-            echo "OpenSSL configuration error: ${ARCH} on ${PLATFORM_NAME} not supported!"
+            echo "OpenSSL configuration error: $ARCH on $SDK not supported!"
         fi
-    elif [[ "${SDK}" == "macosx" ]]; then
-        if [[ "${ARCH}" == "i386" ]]; then
+    elif [ "$SDK" = "macosx" ]; then
+        if [ "$ARCH" = "i386" ]; then
             PLATFORM_FLAGS="no-asm"
             CONFIG="darwin-i386-cc"
-        elif [[ "${ARCH}" == "x86_64" ]]; then
+        elif [ "$ARCH" = "x86_64" ]; then
             PLATFORM_FLAGS="no-asm enable-ec_nistp_64_gcc_128"
             CONFIG="darwin64-x86_64-cc"
-        elif [[ "${ARCH}" == "arm64" ]]; then
+        elif [ "$ARCH" = "arm64" ]; then
             PLATFORM_FLAGS="no-asm enable-ec_nistp_64_gcc_128"
             CONFIG="darwin64-arm64-cc"
         else
-            echo "OpenSSL configuration error: ${ARCH} on ${PLATFORM_NAME} not supported!"
+            echo "OpenSSL configuration error: $ARCH on $SDK not supported!"
         fi
     fi
 
-    if [ -n "${CONFIG}" ]; then
+    if [ -n "$CONFIG" ]; then
         ./Configure \
             no-shared \
             ${PLATFORM_FLAGS} \
             --prefix="$BUILDDIR/$SDK/libssl-$ARCH" \
             ${CONFIG} \
-            CC="$(xcrun --sdk ${SDK} --find clang) -isysroot $(xcrun --sdk ${SDK} --show-sdk-path) -arch ${ARCH} -m$SDK-version-min=$MIN -fembed-bitcode" \
+            CC="$(xcrun --sdk $SDK --find clang) -isysroot $(xcrun --sdk $SDK --show-sdk-path) -arch ${ARCH} -m$SDK-version-min=$MIN -fembed-bitcode" \
             >> "$LOG" 2>&1
 
         make depend >> "$LOG" 2>&1
-        make -j$(sysctl -n hw.logicalcpu_max) build_libs >> "$LOG" 2>&1
+        make "-j$(sysctl -n hw.logicalcpu_max)" build_libs >> "$LOG" 2>&1
         make install_dev >> "$LOG" 2>&1
     fi
 }
@@ -169,7 +169,7 @@ build_libevent() {
     SOURCE="$BUILDDIR/libevent"
     LOG="$BUILDDIR/libevent-$SDK-$ARCH.log"
 
-    if [[ ! -d "$SOURCE" ]]; then
+    if [ ! -d "$SOURCE" ]; then
         echo "- Check out libevent project"
 
         cd "$BUILDDIR"
@@ -183,7 +183,7 @@ build_libevent() {
     make distclean 2>/dev/null 1>/dev/null
 
     # Generate the configure script.
-    if [[ ! -f ./configure ]]; then
+    if [ ! -f ./configure ]; then
         ./autogen.sh >> "$LOG" 2>&1
     fi
 
@@ -221,7 +221,7 @@ build_libanon() {
     SOURCE="$BUILDDIR/ator-protocol"
     LOG="$BUILDDIR/libanon-$SDK-$ARCH.log"
 
-    if [[ ! -d "$SOURCE" ]]; then
+    if [ ! -d "$SOURCE" ]; then
         echo "- Check out ator-protocol project"
 
         cd "$BUILDDIR"
@@ -238,7 +238,7 @@ build_libanon() {
     git apply --quiet "$ROOT/AnyoneKit/mmap-cache.patch"
 
     # Generate the configure script.
-    if [[ ! -f ./configure ]]; then
+    if [ ! -f ./configure ]; then
         # FIXME: This fixes `AnyoneKit/anon/autogen.sh`. Check if that was changed and remove this patch.
         sed -i'.backup' -e 's/all,error/no-obsolete,error/' autogen.sh
 
@@ -327,7 +327,7 @@ create_framework() {
 
     mkdir -p "$BUILDDIR/$SDK/anon.framework/Headers"
 
-    if [[ -z "$IS_FAT" ]]; then
+    if [ -z "$IS_FAT" ]; then
         echo "- Create framework for $SDK"
 
         POSTFIX="-arm64"
