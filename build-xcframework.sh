@@ -325,6 +325,7 @@ create_framework() {
     SDK=$1
     IS_FAT=$2
 
+    rm -rf "$BUILDDIR/$SDK/anon.framework"
     mkdir -p "$BUILDDIR/$SDK/anon.framework/Headers"
 
     if [ -z "$IS_FAT" ]; then
