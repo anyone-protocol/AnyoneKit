@@ -47,7 +47,7 @@ doing the following:
 - Install build tools via [Homebrew](https://brew.sh):
 
 ```sh
-brew install automake autoconf libtool gettext
+brew bundle
 ```
 
 - Update the version numbers of the libraries used in [`build-xcframework.sh`](build-xcframework.sh).
