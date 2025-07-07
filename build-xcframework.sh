@@ -3,7 +3,7 @@
 PATH=$PATH:/usr/local/bin:/usr/local/opt/gettext/bin:/usr/local/opt/automake/bin:/usr/local/opt/aclocal/bin:/opt/homebrew/bin
 
 XZ_VERSION="v5.8.1"
-OPENSSL_VERSION="openssl-3.5.0"
+OPENSSL_VERSION="openssl-3.5.1"
 LIBEVENT_VERSION="release-2.1.12-stable"
 ATOR_VERSION="v0.4.9.11"
 
