@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable, readonly) NSString *privateKey;
 
 /**
- The BASE32 encoded public key. Should be 32 exactly bytes long, resp. 52 characters in BASE32 encoding.
+ The BASE32 encoded public key. Should be exactly 32 bytes long, resp. 52 characters in BASE32 encoding.
  */
 @property (nonatomic, nullable, readonly) NSString *publicKey;
 
