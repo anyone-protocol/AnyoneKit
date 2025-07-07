@@ -53,7 +53,7 @@ static __weak AnonThread *_thread = nil;
     NSArray *arguments = self.arguments;
     int argc = (int)(arguments.count + 1);
     char *argv[argc];
-    argv[0] = "tor";
+    argv[0] = "anon";
     for (NSUInteger idx = 0; idx < arguments.count; idx++)
         argv[idx + 1] = (char *)[arguments[idx] UTF8String];
     argv[argc] = NULL;
