@@ -19,10 +19,7 @@ fi
 
 cd ../..
 
-# Test if folder is older then 1 week.
-OLD="$(find anon.xcframework -mmin +10080 2>/dev/null)"
-
-if [ ! -d anon.xcframework -o ! -z "$OLD" ]; then
+if [ ! -d anon.xcframework ]; then
     load "https://github.com/anyone-protocol/AnyoneKit/releases/download/$VERSION/anon.xcframework.zip"
     unzip anon.xcframework.zip
     rm anon.xcframework.zip
