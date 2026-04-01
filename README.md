@@ -10,10 +10,10 @@ Currently, the framework contains the following versions of `anon`, `libevent`, 
 
 | Component | Version  |
 |:--------- | --------:|
-| anon      | 0.4.9.11 |
+| anon      | 0.4.9.13 |
 | libevent  | 2.1.12   |
-| OpenSSL   | 3.5.1    |
-| liblzma   | 5.8.1    |
+| OpenSSL   | 3.6.1    |
+| liblzma   | 5.8.2    |
 
 
 ## Example
@@ -22,9 +22,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-- iOS 12.0 or later
-- MacOS 10.13 or later
-- Xcode 15.0 or later
+- iOS 15.0 or later
+- MacOS 11.0 or later
+- Xcode 16.0 or later
 
 
 ## Installation

@@ -1,7 +1,7 @@
 Pod::Spec.new do |m|
 
   m.name             = 'AnyoneKit'
-  m.version          = '409.11.2'
+  m.version          = '409.13.1'
   m.summary          = 'AnyoneKit is the easiest way to embed the Anyone network in your iOS and macOS application.'
   m.description      = 'AnyoneKit is the easiest way to embed the Anyone network in your iOS and macOS application. Currently, the framework compiles in static versions of anon, libevent, openssl, and liblzma.'
 
@@ -34,6 +34,6 @@ Pod::Spec.new do |m|
 
   m.preserve_paths = 'build-xcframework.sh', 'anon.xcframework', 'AnyoneKit/download.sh'
 
-  m.prepare_command = "AnyoneKit/download.sh v#{m.version}"
+  m.prepare_command = "AnyoneKit/download.sh v#{m.version} 5472dc8c06312eaf7b08978634f2c3a98881bdd90baac06fed0b797d032e440f"
 
 end
