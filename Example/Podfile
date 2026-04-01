@@ -8,7 +8,7 @@ end
 
 
 target 'AnyoneKit-Example' do
-  platform :ios, '12.0'
+  platform :ios, '15.0'
 
   anyone
 
@@ -19,7 +19,7 @@ target 'AnyoneKit-Example' do
 end
 
 target 'AnyoneKit-Example-Mac' do
-  platform :macos, '10.13'
+  platform :macos, '11.0'
 
   anyone
 end

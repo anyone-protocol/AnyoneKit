@@ -311,22 +311,67 @@ fatten() {
         return
     fi
 
+    LOG="$BUILDDIR/framework.log"
+
     echo "- Fatten $LIB in $NAME ($SDK)"
 
-    mkdir -p "$BUILDDIR/$SDK/$NAME/lib"
+    mkdir -p "$BUILDDIR/$SDK/$NAME/lib" >> "$LOG" 2>&1
 
     lipo \
         -arch arm64 "$BUILDDIR/$SDK/$NAME-arm64/lib/$LIB.a" \
         -arch x86_64 "$BUILDDIR/$SDK/$NAME-x86_64/lib/$LIB.a" \
-        -create -output "$BUILDDIR/$SDK/$NAME/lib/$LIB.a"
+        -create -output "$BUILDDIR/$SDK/$NAME/lib/$LIB.a" >> "$LOG" 2>&1
+}
+
+write_info_plist() {
+    SDK=$1
+    NAME=$2
+    VERSION=$3
+
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-102088
+    cat > "$BUILDDIR/$SDK/$NAME.framework/Info.plist" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleExecutable</key>
+  <string>$NAME</string>
+  <key>CFBundleIdentifier</key>
+  <string>io.anyone.$NAME</string>
+  <key>CFBundleInfoDictionaryVersion</key>
+  <string>6.0</string>
+  <key>CFBundleName</key>
+  <string>$NAME</string>
+  <key>CFBundlePackageType</key>
+  <string>FMWK</string>
+  <key>CFBundleShortVersionString</key>
+  <string>$VERSION</string>
+  <key>CFBundleSupportedPlatforms</key>
+  <array>
+    <string>$SDK</string>
+  </array>
+  <key>CFBundleVersion</key>
+  <string>$VERSION</string>
+</dict>
+</plist>
+EOF
 }
 
 create_framework() {
     SDK=$1
     IS_FAT=$2
+    NO_LZMA=$3
 
-    rm -rf "$BUILDDIR/$SDK/anon.framework"
-    mkdir -p "$BUILDDIR/$SDK/anon.framework/Headers"
+    LOG="$BUILDDIR/framework.log"
+
+    if [ -z "$NO_LZMA" ]; then
+        NAME="anon"
+    else
+        NAME="anon-nolzma"
+    fi
+
+    rm -rf "$BUILDDIR/$SDK/$NAME.framework" >> "$LOG" 2>&1
+    mkdir -p "$BUILDDIR/$SDK/$NAME.framework/Headers" >> "$LOG" 2>&1
 
     if [ -z "$IS_FAT" ]; then
         echo "- Create framework for $SDK"
@@ -338,73 +383,94 @@ create_framework() {
         POSTFIX=""
     fi
 
-    LIBS=("$BUILDDIR/$SDK/libssl$POSTFIX/lib/libssl.a" \
-        "$BUILDDIR/$SDK/libssl$POSTFIX/lib/libcrypto.a" \
-        "$BUILDDIR/$SDK/libevent$POSTFIX/lib/libevent.a" \
-        "$BUILDDIR/$SDK/libanon$POSTFIX/lib/libanon.a")
-
-    if [ "$LZMA" == "yes" ]; then
-        LIBS=("$BUILDDIR/$SDK/liblzma$POSTFIX/lib/liblzma.a" "${LIBS[@]}")
+    if [ -z "$NO_LZMA" ]; then
+        LIBS=("$BUILDDIR/$SDK/libssl$POSTFIX/lib/libssl.a" \
+            "$BUILDDIR/$SDK/libssl$POSTFIX/lib/libcrypto.a" \
+            "$BUILDDIR/$SDK/libevent$POSTFIX/lib/libevent.a" \
+            "$BUILDDIR/$SDK/liblzma$POSTFIX/lib/liblzma.a" \
+            "$BUILDDIR/$SDK/libanon$POSTFIX/lib/libanon.a")
+    else
+        LIBS=("$BUILDDIR/$SDK/libssl$POSTFIX/lib/libssl.a" \
+            "$BUILDDIR/$SDK/libssl$POSTFIX/lib/libcrypto.a" \
+            "$BUILDDIR/$SDK/libevent$POSTFIX/lib/libevent.a" \
+            "$BUILDDIR/$SDK/libanon-nolzma$POSTFIX/lib/libanon.a")
     fi
 
-    libtool -static -o "$BUILDDIR/$SDK/anon.framework/anon" "${LIBS[@]}"
+    libtool -static -o "$BUILDDIR/$SDK/$NAME.framework/$NAME" "${LIBS[@]}" >> "$LOG" 2>&1
 
     HEADERS=("$BUILDDIR/$SDK/libssl-arm64/include"/* \
         "$BUILDDIR/$SDK/libevent-arm64/include"/* \
         "$BUILDDIR/$SDK/libanon-arm64/include"/*)
 
-    if [ "$LZMA" == "yes" ]; then
+    if [ ! -z "$NO_LZMA" ]; then
         HEADERS=("$BUILDDIR/$SDK/liblzma-arm64/include"/* "${HEADERS[@]}")
     fi
 
-    cp -r "${HEADERS[@]}" "$BUILDDIR/$SDK/anon.framework/Headers"
+    cp -r "${HEADERS[@]}" "$BUILDDIR/$SDK/$NAME.framework/Headers" >> "$LOG" 2>&1
+
+    write_info_plist "$SDK" "$NAME" "${ATOR_VERSION##*-}"
 }
 
-build_liblzma       iphoneos            arm64           12.0
-build_libssl        iphoneos            arm64           12.0
-build_libevent      iphoneos            arm64           12.0
-build_libanon       iphoneos            arm64           12.0
+create_xcframework() {
+    NAMES=$1
+
+    LOG="$BUILDDIR/framework.log"
+
+    for name in $NAMES
+    do
+        echo "- Create xcframework for $name"
+
+        rm -rf "$ROOT/$name.xcframework" "$ROOT/$name.xcframework.zip" >> "$LOG" 2>&1
+
+        xcodebuild -create-xcframework \
+            -framework "$BUILDDIR/iphoneos/$name.framework" \
+            -framework "$BUILDDIR/iphonesimulator/$name.framework" \
+            -framework "$BUILDDIR/macosx/$name.framework" \
+            -output "$ROOT/$name.xcframework" >> "$LOG" 2>&1
+
+        cd "$ROOT"
+
+        zip -r -9 "$name.xcframework.zip" "$name.xcframework" >> "$LOG" 2>&1
+        shasum -a 256 "$name.xcframework.zip"
+    done
+}
+
+build_liblzma       iphoneos            arm64           15.0
+build_libssl        iphoneos            arm64           15.0
+build_libevent      iphoneos            arm64           15.0
+build_libanon       iphoneos            arm64           15.0
 create_framework    iphoneos
 
-build_liblzma       iphonesimulator     arm64           12.0
-build_liblzma       iphonesimulator     x86_64          12.0
+build_liblzma       iphonesimulator     arm64           15.0
+build_liblzma       iphonesimulator     x86_64          15.0
 fatten              liblzma             iphonesimulator
-build_libssl        iphonesimulator     arm64           12.0
-build_libssl        iphonesimulator     x86_64          12.0
+build_libssl        iphonesimulator     arm64           15.0
+build_libssl        iphonesimulator     x86_64          15.0
 fatten              libssl              iphonesimulator
 fatten              libssl              iphonesimulator libcrypto
-build_libevent      iphonesimulator     arm64           12.0
-build_libevent      iphonesimulator     x86_64          12.0
+build_libevent      iphonesimulator     arm64           15.0
+build_libevent      iphonesimulator     x86_64          15.0
 fatten              libevent            iphonesimulator
-build_libanon       iphonesimulator     arm64           12.0
-build_libanon       iphonesimulator     x86_64          12.0
+build_libanon       iphonesimulator     arm64           15.0
+build_libanon       iphonesimulator     x86_64          15.0
 fatten              libanon             iphonesimulator
 create_framework    iphonesimulator     fat
 
-build_liblzma       macosx              arm64           10.13
-build_liblzma       macosx              x86_64          10.13
+build_liblzma       macosx              arm64           11.0
+build_liblzma       macosx              x86_64          11.0
 fatten              liblzma             macosx
-build_libssl        macosx              arm64           10.13
-build_libssl        macosx              x86_64          10.13
+build_libssl        macosx              arm64           11.0
+build_libssl        macosx              x86_64          11.0
 fatten              libssl              macosx
 fatten              libssl              macosx          libcrypto
-build_libevent      macosx              arm64           10.13
-build_libevent      macosx              x86_64          10.13
+build_libevent      macosx              arm64           11.0
+build_libevent      macosx              x86_64          11.0
 fatten              libevent            macosx
-build_libanon       macosx              arm64           10.13
-build_libanon       macosx              x86_64          10.13
+build_libanon       macosx              arm64           11.0
+build_libanon       macosx              x86_64          11.0
 fatten              libanon             macosx
 create_framework    macosx              fat
-
-echo "- Create xcframework"
-
-rm -rf "$ROOT/anon.xcframework"
-
-xcodebuild -create-xcframework \
-    -framework "$BUILDDIR/iphoneos/anon.framework" \
-    -framework "$BUILDDIR/iphonesimulator/anon.framework" \
-    -framework "$BUILDDIR/macosx/anon.framework" \
-    -output "$ROOT/anon.xcframework"
+create_xcframework  "anon"
 
 if [ -z $DEBUG ]; then
     rm -rf "$BUILDDIR"
