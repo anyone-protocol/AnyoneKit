@@ -65,14 +65,17 @@
 		90700F7B59D5C0641E3250C1 /* Pods-Tor_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tor_Example.debug.xcconfig"; path = "Target Support Files/Pods-Tor_Example/Pods-Tor_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A00A91782CF4A9C90070EB76 /* build-xcframework.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "build-xcframework.sh"; path = "../build-xcframework.sh"; sourceTree = SOURCE_ROOT; };
 		A044E1802CF5FCCF007BC65C /* download.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = download.sh; path = ../AnyoneKit/download.sh; sourceTree = SOURCE_ROOT; };
+		A0873F2D2F7D5FE10081DEA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A0873F2F2F7D5FE40081DEA9 /* AnyoneKit-Example-Mac-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnyoneKit-Example-Mac-Bridging-Header.h"; sourceTree = "<group>"; };
+		A0873F302F7D62540081DEA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A0873F322F7D62560081DEA9 /* AnyoneKit-Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnyoneKit-Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		A0873F332F7D62DF0081DEA9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A09133762DEE03CC00071F53 /* Brewfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Brewfile; path = ../Brewfile; sourceTree = SOURCE_ROOT; };
 		A0CADB432C63B65B0037A37C /* AnyoneKit.podspec */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; name = AnyoneKit.podspec; path = ../AnyoneKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A0CADB462C63B7570037A37C /* AnyoneKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AnyoneKit-Info.plist"; sourceTree = "<group>"; };
 		A0CADB472C63B7570037A37C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A0CADB482C63B7570037A37C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A0CADB492C63B7570037A37C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A0CADB4A2C63B7570037A37C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		A0CADB4B2C63B7570037A37C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A0CADB562C63B7870037A37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0CADB5C2C63B9510037A37C /* mmap-cache.patch */ = {isa = PBXFileReference; lastKnownFileType = text; name = "mmap-cache.patch"; path = "../AnyoneKit/mmap-cache.patch"; sourceTree = "<group>"; };
 		A0F008F727906CA30073D36D /* Podfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
@@ -83,8 +86,6 @@
 		A0F00909279070B40073D36D /* AnyoneKit-Example-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnyoneKit-Example-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F0090B279070B40073D36D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A0F0090C279070B40073D36D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A0F0090E279070B40073D36D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A0F0090F279070B40073D36D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A0F00916279070B40073D36D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A0F00918279070B40073D36D /* Example-Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Example-Mac.entitlements"; sourceTree = "<group>"; };
 		A0F0092027907A8A0073D36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -240,11 +241,11 @@
 			children = (
 				A0F0090B279070B40073D36D /* AppDelegate.h */,
 				A0F0090C279070B40073D36D /* AppDelegate.m */,
-				A0F0090E279070B40073D36D /* ViewController.h */,
-				A0F0090F279070B40073D36D /* ViewController.m */,
 				A0F00913279070B40073D36D /* Main.storyboard */,
 				A0F00916279070B40073D36D /* main.m */,
+				A0873F2D2F7D5FE10081DEA9 /* ViewController.swift */,
 				A0F00918279070B40073D36D /* Example-Mac.entitlements */,
+				A0873F2F2F7D5FE40081DEA9 /* AnyoneKit-Example-Mac-Bridging-Header.h */,
 			);
 			path = "Example-Mac";
 			sourceTree = "<group>";
@@ -778,6 +779,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Example-Mac/AnyoneKit-Example-Mac-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -818,6 +822,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Example-Mac/AnyoneKit-Example-Mac-Bridging-Header.h";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
