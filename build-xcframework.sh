@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eo pipefail
+
 PATH=$PATH:/usr/local/bin:/usr/local/opt/gettext/bin:/usr/local/opt/automake/bin:/usr/local/opt/aclocal/bin:/opt/homebrew/bin
 
 XZ_VERSION="v5.8.1"
@@ -24,6 +26,7 @@ done
 if [ -z $DEBUG ]; then
     BUILDDIR="$(mktemp -d)"
 else
+    set -x
     BUILDDIR="$ROOT/build"
     mkdir -p "$BUILDDIR"
 fi
@@ -53,7 +56,9 @@ build_liblzma() {
 
     cd "$SOURCE"
 
-    make distclean 2>/dev/null 1>/dev/null
+    if [ -f Makefile ]; then
+        make distclean >> "$LOG" 2>&1
+    fi
 
     # Generate the configure script.
     if [ ! -f ./configure ]; then
@@ -106,7 +111,9 @@ build_libssl() {
 
     cd "$SOURCE"
 
-    make distclean >> "$LOG" 2>&1
+    if [ -f Makefile ]; then
+        make distclean >> "$LOG" 2>&1
+    fi
 
     if [ "$SDK" = "iphoneos" ]; then
         if [ "$ARCH" = "arm64" ]; then
@@ -180,7 +187,9 @@ build_libevent() {
 
     cd "$SOURCE"
 
-    make distclean 2>/dev/null 1>/dev/null
+    if [ -f Makefile ]; then
+        make distclean >> "$LOG" 2>&1
+    fi
 
     # Generate the configure script.
     if [ ! -f ./configure ]; then
@@ -232,10 +241,13 @@ build_libanon() {
 
     cd "$SOURCE"
 
-    make distclean 2>/dev/null 1>/dev/null
+    if [ -f Makefile ]; then
+        make distclean >> "$LOG" 2>&1
+    fi
 
     ## Apply patches:
-    git apply --quiet "$ROOT/AnyoneKit/mmap-cache.patch"
+    git restore . >> "$LOG" 2>&1
+    git apply "$ROOT/AnyoneKit/mmap-cache.patch" >> "$LOG" 2>&1
 
     # Generate the configure script.
     if [ ! -f ./configure ]; then
