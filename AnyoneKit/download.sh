@@ -1,6 +1,7 @@
 #!/bin/sh
 
 VERSION=$1
+CHECKSUM=$2
 
 load() {
     curl --remote-name --progress-bar --location $1
@@ -21,6 +22,15 @@ cd ../..
 
 if [ ! -d anon.xcframework ]; then
     load "https://github.com/anyone-protocol/AnyoneKit/releases/download/$VERSION/anon.xcframework.zip"
+
+    actual=$(shasum -a 256 "anon.xcframework.zip" | awk '{print $1}')
+
+    if [ "$actual" != "$CHECKSUM" ]; then
+        echo "ERROR: Checksum verification failed: $actual != $CHECKSUM"
+
+        exit 1
+    fi
+
     unzip anon.xcframework.zip
     rm anon.xcframework.zip
 fi

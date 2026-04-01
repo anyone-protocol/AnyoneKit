@@ -54,18 +54,12 @@ brew bundle
 - Run [`build-xcframework.sh`](build-xcframework.sh), check the logs and test the created `anon.xcframework`
   with the contained example apps.
 
-- Update info and version numbers in `README.md` and `AnyoneKit.podspec`!
+- Update info and version numbers and checksum in [`README.md`](README.md) and [`AnyoneKit.podspec`](AnyoneKit.podspec)!
 
 - Commit, tag and push new release.
 
-- Zip `anon.framework`:
-
-```sh
-zip -r -9 anon.xcframework.zip anon.xcframework
-```
-
 - Create a pre-release on https://github.com/anyone-protocol/AnyoneKit/releases with the latest 
-  info as per older releases and zip and upload the created anon.xcframework.
+  info as per older releases and zip and upload the created anon.xcframework.zip.
 
 - Then lint like this:
 
