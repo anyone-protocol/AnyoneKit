@@ -4,10 +4,10 @@ set -eo pipefail
 
 PATH=$PATH:/usr/local/bin:/usr/local/opt/gettext/bin:/usr/local/opt/automake/bin:/usr/local/opt/aclocal/bin:/opt/homebrew/bin
 
-XZ_VERSION="v5.8.2"
-OPENSSL_VERSION="openssl-3.6.1"
+XZ_VERSION="v5.8.3"
+OPENSSL_VERSION="openssl-3.6.2"
 LIBEVENT_VERSION="release-2.1.12-stable"
-ATOR_VERSION="v0.4.9.13"
+ATOR_VERSION="v0.4.10.2"
 
 
 cd "$(dirname "$0")"
