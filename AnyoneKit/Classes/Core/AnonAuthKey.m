@@ -31,7 +31,7 @@
         if (!piece) return nil;
 
         if (self.isPrivate) {
-            _anonAddress = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://%@.anon", piece]];
+            _anyoneAddress = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://%@.anyone", piece]];
 
             piece = [AnonAuthKey getNextPieceOf:parts];
             if (!piece) return nil;
@@ -65,7 +65,7 @@
         if (!name || [name isEqualToString:@""]) name = [NSUUID UUID].UUIDString;
 
         _file = [[NSURL alloc] initFileURLWithPath:[NSString stringWithFormat:@"%@.auth_private", name]];
-        _anonAddress = url;
+        _anyoneAddress = url;
         _authType = @"descriptor"; // Currently the only allowed value.
         _keyType = @"x25519"; // Currently the only allowed value.
         _key = key;
@@ -81,7 +81,7 @@
         if (!name || [name isEqualToString:@""]) name = [NSUUID UUID].UUIDString;
 
         _file = [[NSURL alloc] initFileURLWithPath:[NSString stringWithFormat:@"%@.auth", name]];
-        _anonAddress = nil;
+        _anyoneAddress = nil;
         _authType = @"descriptor"; // Currently the only allowed value.
         _keyType = @"x25519"; // Currently the only allowed value.
         _key = key;
@@ -130,10 +130,10 @@
 - (NSString *)description
 {
     if (self.isPrivate) {
-        // Spec says: "MUST NOT have the ".anon" suffix.
+        // Spec says: "MUST NOT have the ".anyone" suffix.
 
         return [NSString stringWithFormat:@"%@:%@:%@:%@",
-                _anonAddress.host.stringByDeletingPathExtension,
+                _anyoneAddress.host.stringByDeletingPathExtension,
                 _authType, _keyType, _key];
     }
 
@@ -142,8 +142,8 @@
 
 - (NSString *)debugDescription
 {
-    return [NSString stringWithFormat:@"%@: file: %@, isPrivate: %d, anonAddress: %@, authType: %@, keyType: %@, key: %@",
-            NSStringFromClass(self.class), _file, self.isPrivate, _anonAddress, _authType, _keyType, _key];
+    return [NSString stringWithFormat:@"%@: file: %@, isPrivate: %d, anyoneAddress: %@, authType: %@, keyType: %@, key: %@",
+            NSStringFromClass(self.class), _file, self.isPrivate, _anyoneAddress, _authType, _keyType, _key];
 }
 
 

@@ -312,7 +312,7 @@ The circuit ID. Currently only numbers beginning with "1" but Tor spec says, tha
 /**
  The rendevouz query.
 
- Should be equal the anon address this circuit was used for minus the @c .anon postfix.
+ Should be equal the anyone address this circuit was used for minus the @c .anyone postfix.
  */
 @property (readonly, nullable) NSString *rendQuery;
 
